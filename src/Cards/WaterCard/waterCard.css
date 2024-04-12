@@ -1,0 +1,90 @@
+.WaterCard {
+    width: 80%;
+    margin-left: 10%;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    margin-top: 5vh;
+    position: relative;
+}
+
+.WaterCardTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vh 2vh; /* Adjust padding as needed */
+}
+
+.WaterCardTopH2{
+    margin: 0; 
+}
+
+.WaterCardTopLeftImg{
+    background-image: url(../../../public/Icons/drop-icon.png);
+    background-color: transparent;
+    border: transparent;
+    background-position: center;
+    background-size: 100%; 
+    cursor: pointer;
+    width: 6vh;
+    height: 6vh;
+    margin-right: 2vh;   
+}
+
+.WaterCardTopH3 {
+    margin: 0; /* Remove any default margin */
+}
+
+.WaterCardTopRightImg {
+    background-image: url(../../../public/Icons/water-icon.png);
+    background-color: transparent;
+    border: transparent;
+    background-position: center;
+    background-size: 100%; 
+    cursor: pointer;
+    width: 4vh;
+    height: 4vh;
+    margin-right: 1vh;
+}
+
+.WaterCardMiddle {
+    width: 80%;
+    height: 1vh;
+    margin-left: 10%;
+    border-radius: 10%;
+    background-color: lightgray;
+    margin-top: 2vh; /* Add margin to separate from WaterCardTop */
+}
+
+.Water-bar {
+    height: 1vh;
+    background-color: #73b3f6e4;
+    transition: width 0.5s ease;
+    border-radius: 10%;
+    margin-left: 0%;
+}
+
+.WaterCardLast{
+
+
+}
+
+
+.WaterCardLastCurrent{
+    display: flex;
+    margin-left: 2vh;
+    margin-bottom: -4vh;
+}
+
+.WaterCardLastH4Current{
+    margin-left: 1vh;
+}
+
+.WaterCardLastGoal{
+    display: flex;
+    margin-left: 2vh;
+    margin-top: -4vh;
+}
+
+.WaterCardLastH4Goal{
+    margin-left: 1vh;
+}

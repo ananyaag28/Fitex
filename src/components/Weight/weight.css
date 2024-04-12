@@ -1,0 +1,48 @@
+.Weight-icon{
+    margin-top: 10vh;
+    width: 128px;
+    height: 128px;
+    background-image: url(../../../public/Icons/weight-icon.png);
+    display: inline-block;
+    justify-content:center;
+    align-items: center;
+    margin-bottom: 5vh;
+}
+
+.WeightInput{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin: auto;
+}
+
+.WeightInput label{
+    font-size:larger;
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+
+.WeightInput input{
+    width: 64px;
+    font-size: larger;
+
+}
+
+.WeightNext{
+    margin-top: 12vh;
+    border: none;
+  }
+  
+  .WeightNext button{
+    border: none;
+  }
+  
+  .WeightNext img{
+    width:64px;
+    height:64px;
+    border: none;
+    background-image: url('../../../public/Icons/next-icon.png');
+    background-size: cover;
+  }
+  

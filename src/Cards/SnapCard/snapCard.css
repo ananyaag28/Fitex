@@ -1,0 +1,88 @@
+.SnapCard{
+    width: 80%;
+    margin-left: 10%;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    margin-top: 5vh;
+}
+.SnapCardTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vh 2vh; /* Adjust padding as needed */
+}
+
+.SnapCardTopH2{
+    margin: 0; 
+}
+
+.SnapCardTopLeftImg{
+    background-image: url(../../../public/Icons/camera-icon.png);
+    background-color: transparent;
+    border: transparent;
+    background-position: center;
+    background-size: 100%; 
+    cursor: pointer;
+    width: 6vh;
+    height: 6vh;
+    margin-right: 2vh;   
+}
+
+.SnapCardTopH3 {
+    margin: 0; /* Remove any default margin */
+}
+
+.SnapCardTopRightImg {
+    background-image: url(../../../public/Icons/fire-icon.png);
+    background-color: transparent;
+    border: transparent;
+    background-position: center;
+    background-size: 100%; 
+    cursor: pointer;
+    width: 4vh;
+    height: 4vh;
+    margin-right: 1vh;
+}
+.SnapCardMiddle{
+  width: 80%;
+  height: 1vh;
+  margin-left: 10%;
+  border-radius: 10%;
+  background-color: lightgray;
+  margin-top: 2vh;
+}
+
+.Snap-bar {
+    height: 1vh;
+    background-color: #ff9f0fe4; /* Blue color */
+    transition: width 0.5s ease; /* Add animation for smooth width change */
+    border-radius: 10%;
+    margin-left: 0%;
+  }
+
+.SnapCardLast{
+
+
+}
+
+
+.SnapCardLastCurrent{
+    display: flex;
+    margin-left: 2vh;
+    margin-bottom: -4vh;
+}
+
+.SnapCardLastH4Current{
+    margin-left: 1vh;
+}
+
+
+.SnapCardLastGoal{
+    display: flex;
+    margin-left: 2vh;
+    margin-top: -4vh;
+}
+
+.SnapCardLastH4Goal{
+    margin-left: 1vh;
+}

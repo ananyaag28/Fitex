@@ -1,0 +1,45 @@
+.Home{
+    background-image: url(../../../public/Images/1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.infopageCard{
+          width: 8vh;
+          height:  8vh;
+          border-radius: 50%;
+          background-image: url(../../../public/Icons/user-icon.png);
+          background-position: center;
+          background-size: cover; 
+          float: right;
+          margin-top:-10vh; 
+          margin-right: 5vh;
+          margin-right: 2vh;;
+          cursor: pointer;   
+}
+
+
+.HomeWaterCard{
+    margin-top: 20vh;
+}
+
+.bmipageCard{
+    margin:5vh;
+    width: 25vh;
+    height: 25vh;
+    background-image: url(../../../public/Icons/bmi-icon.png);
+    background-color: aliceblue;
+    background-position: center;
+    background-size: 100%; 
+    cursor: pointer;
+}
+
+.foodpageCard input{
+    width: 80vw;
+    height: 30px;
+    border-top-left-radius: 0%;
+    border-top-right-radius: 0%;
+    border-bottom-right-radius: 0%;
+    border-bottom-left-radius: 0%;
+    
+}

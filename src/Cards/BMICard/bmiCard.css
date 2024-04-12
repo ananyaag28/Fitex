@@ -1,0 +1,99 @@
+.BMICard{
+    width: 80%;
+    margin-left: 10%;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    margin-top: 5vh;
+}
+.BMICardTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vh 2vh; /* Adjust padding as needed */
+}
+
+.BMICardTopH2{
+    margin: 0; 
+}
+
+.BMICardTopLeftImg{
+    background-image: url(../../../public/Icons/bmi-icon.png);
+    background-color: transparent;
+    border: transparent;
+    background-position: center;
+    background-size: 100%; 
+    cursor: pointer;
+    width: 6vh;
+    height: 6vh;
+    margin-right: 2vh;   
+}
+
+.BMICardTopH3 {
+    margin: 0; /* Remove any default margin */
+}
+
+.BMICardTopRightImg {
+    background-image: url(../../../public/Icons/fire-icon.png);
+    background-color: transparent;
+    border: transparent;
+    background-position: center;
+    background-size: 100%; 
+    cursor: pointer;
+    width: 4vh;
+    height: 4vh;
+    margin-right: 1vh;
+}
+BMICardMiddle {
+    width: 80%;
+    height: 2vh;
+    position: relative;
+    margin-top: 2vh;
+}
+
+.BMI-bar {
+    position: absolute;
+    /* top: 10%; Adjust the top position */
+    left: 15%;
+    height: 2vh; /* Adjust the height */
+    background: linear-gradient(to right, #DDDDDD, #00FF00, #FFFF00, #FF0000, #8A2BE2);
+    border-radius: 10px;
+}
+
+.BMI-pointer {
+    /* position: absolute; */
+    /* top: 50%; */
+    /* transform: translateY(-50%); */
+    /* left: 15%; */
+    /* width: 2vh; */
+    /* height: 2vh; */
+    /* background-color: black; */
+    /* border-radius: 50%; */
+    /* z-index: 1; */
+}
+
+.BMICardLast{
+
+
+}
+
+
+.BMICardLastCurrent{
+    display: flex;
+    margin-left: 2vh;
+    margin-bottom: -4vh;
+}
+
+.BMICardLastH4Current{
+    margin-left: 1vh;
+}
+
+
+.BMICardLastGoal{
+    display: flex;
+    margin-left: 2vh;
+    margin-top: -4vh;
+}
+
+.BMICardLastH4Goal{
+    margin-left: 1vh;
+}
