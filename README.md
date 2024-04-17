@@ -2,7 +2,7 @@ https://avneeshrai07.github.io/Fitex/
 
 
 # Create a virtual environment
-python -m venv venv
+python -m venv env
 
 # Activate the virtual environment
 # On Windows
