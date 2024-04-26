@@ -8,7 +8,7 @@ const Snap = () => {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const fileInputRef = useRef(null); // Ref for file input element
-
+  const [response, setResponse] = useState('');
   const startVideoStream = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ video: true });
@@ -67,19 +67,22 @@ const Snap = () => {
         console.log(formData);
         console.log(blob)
         const response = await fetch('http://127.0.0.1:5000/', {
-          method: 'POST', 
-          
-          body: formData,
-          mode: 'no-cors'
+          method: 'POST',
+          body: formData
+          // mode: 'no-cors'
         });
-        
+
         if (response.ok) {
           const data = await response.json();
-          const my_data = JSON.stringify(data);
-          // alert("Image has been saved!");
-          alert("Received data from backend:", my_data);
+          console.log('Response from server:', data);
+          const resultString = data.Result; // Access the "Result" key
+
+          setResponse(resultString);
+          console.log(resultString)
+          // setResponse(JSON.stringify(data1))
+
           // setImageSrc(null);
-        } else {  
+        } else {
           console.error('Failed to send image to the backend');
         }
       } catch (error) {
@@ -116,14 +119,23 @@ const Snap = () => {
           <li>Step 2: Just press the "Get Calories" button to analyze the image and get calorie information.</li>
         </ul>
       </div>
+      <div>
+        <p >{response}</p>
+        {imageSrc && (
+          <div className="snapPageImageContainer">
 
+            <img src={imageSrc} alt="Captured Image" className="snapPageImage" style={{ height: '30vh' }} />
+            <button onClick={handleSaveImage} className="snapPageButton">Get Calories</button>
+          </div>
+        )}
+      </div>
       <input
         type="file"
         id="image"
         name='image'
         onChange={handleFileInputChange}
         ref={fileInputRef} // Assigning ref to file input element
-        style={{ display: isCapturing ? 'none' : 'block' , fontFamily: '"Tilt Neon", "sans-serif"' }} // Display only when not capturing
+        style={{ display: isCapturing ? 'none' : 'block', fontFamily: '"Tilt Neon", "sans-serif"' }} // Display only when not capturing
       />
 
       <video ref={videoRef} className="snapPageVideo" style={{ display: isCapturing ? 'block' : 'none' }}></video>
@@ -134,12 +146,7 @@ const Snap = () => {
       </button>
       {isCapturing && <button onClick={handleStopCapture} className="snapPageButton">Stop Capture</button>}
 
-      {imageSrc && (
-        <div className="snapPageImageContainer">
-          <img src={imageSrc} alt="Captured Image" className="snapPageImage" style={{height:'30vh'}}/>
-          <button onClick={handleSaveImage} className="snapPageButton">Get Calories</button>
-        </div>
-      )}
+
     </div>
 
 
