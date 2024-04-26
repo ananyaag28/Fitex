@@ -5,10 +5,12 @@ from keras.preprocessing.image import load_img, img_to_array
 from keras.models import load_model
 # from PIL import Image
 from bs4 import BeautifulSoup
+from flask_cors import CORS
 import os
 import requests
 model=load_model('FV.h5')
 app = Flask(__name__)
+CORS(app)
 
 #define all the functions here
 labels = {0: 'apple', 1: 'banana', 2: 'beetroot', 3: 'bell pepper', 4: 'cabbage', 5: 'capsicum', 6: 'carrot',
@@ -17,33 +19,54 @@ labels = {0: 'apple', 1: 'banana', 2: 'beetroot', 3: 'bell pepper', 4: 'cabbage'
           19: 'mango', 20: 'onion', 21: 'orange', 22: 'paprika', 23: 'pear', 24: 'peas', 25: 'pineapple',
           26: 'pomegranate', 27: 'potato', 28: 'raddish', 29: 'soy beans', 30: 'spinach', 31: 'sweetcorn',
           32: 'sweetpotato', 33: 'tomato', 34: 'turnip', 35: 'watermelon'}
-average_calories = {
-    'apple': 52,'banana': 89,'beetroot': 43,'bell pepper': 31,'cabbage': 25,'capsicum': 40,'carrot': 41,'cauliflower': 25,'chilli pepper': 40,'corn': 96,'cucumber': 15,'eggplant': 25,'garlic': 149,'ginger': 80,'grapes': 69,'jalepeno': 27,'kiwi': 61,'lemon': 29,'lettuce': 15,'mango': 60,'onion': 40,'orange': 62,'paprika': 31,'pear': 57,'peas': 81,'pineapple': 50,'pomegranate': 83,'potato': 77,'radish': 16,'soy beans': 173,'spinach': 23,'sweetcorn': 86,'sweetpotato': 86,'tomato': 18,'turnip': 28,'watermelon': 30
-}
-fruits = ['Apple', 'Banana', 'Bello Pepper', 'Chilli Pepper', 'Grapes', 'Jalepeno', 'Kiwi', 'Lemon', 'Mango', 'Orange',
-          'Paprika', 'Pear', 'Pineapple', 'Pomegranate', 'Watermelon']
-vegetables = ['Beetroot', 'Cabbage', 'Capsicum', 'Carrot', 'Cauliflower', 'Corn', 'Cucumber', 'Eggplant', 'Ginger',
-              'Lettuce', 'Onion', 'Peas', 'Potato', 'Raddish', 'Soy Beans', 'Spinach', 'Sweetcorn', 'Sweetpotato',
-              'Tomato', 'Turnip']
-
-
-def check_for_fruits(prediction):
-  for fuit in fruits:
-    if fuit==prediction:
-        return True
-  return False
-
-def check_for_veges(prediction):
-  for fuit in vegetables:
-    if fuit==prediction:
-        return True
-  return False
-
-def h_c_get_calories(prediction):
-   for fruits, calories in average_calories.items():
-      if fruits == prediction:
-          return calories
-   return None
+def get_nutritional_info(item_name):
+    # Dictionary containing average nutritional information
+    average_content = {
+        'Apple': {'carbohydrate': 14, 'protein': 0.3, 'calories': 52},
+        'Banana': {'carbohydrate': 23, 'protein': 1.1, 'calories': 89},
+        'Bello Pepper': {'carbohydrate': 6, 'protein': 1, 'calories': 20},
+        'Chilli Pepper': {'carbohydrate': 9, 'protein': 2, 'calories': 40},
+        'Grapes': {'carbohydrate': 18, 'protein': 0.6, 'calories': 69},
+        'Jalepeno': {'carbohydrate': 6, 'protein': 1.2, 'calories': 29},
+        'Kiwi': {'carbohydrate': 15, 'protein': 1.1, 'calories': 61},
+        'Lemon': {'carbohydrate': 9, 'protein': 1.1, 'calories': 29},
+        'Mango': {'carbohydrate': 15, 'protein': 0.8, 'calories': 60},
+        'Orange': {'carbohydrate': 12, 'protein': 1.3, 'calories': 47},
+        'Paprika': {'carbohydrate': 6, 'protein': 1.3, 'calories': 31},
+        'Pear': {'carbohydrate': 15, 'protein': 0.4, 'calories': 57},
+        'Pineapple': {'carbohydrate': 13, 'protein': 0.5, 'calories': 50},
+        'Pomegranate': {'carbohydrate': 18, 'protein': 1.7, 'calories': 83},
+        'Watermelon': {'carbohydrate': 8, 'protein': 0.6, 'calories': 30},
+        'Beetroot': {'carbohydrate': 10, 'protein': 1.6, 'calories': 43},
+        'Cabbage': {'carbohydrate': 6, 'protein': 1.3, 'calories': 25},
+        'Capsicum': {'carbohydrate': 9, 'protein': 2, 'calories': 40},
+        'Carrot': {'carbohydrate': 9, 'protein': 0.9, 'calories': 41},
+        'Cauliflower': {'carbohydrate': 5, 'protein': 1.9, 'calories': 25},
+        'Corn': {'carbohydrate': 19, 'protein': 3.4, 'calories': 86},
+        'Cucumber': {'carbohydrate': 3, 'protein': 0.7, 'calories': 16},
+        'Eggplant': {'carbohydrate': 6, 'protein': 0.98, 'calories': 25},
+        'Ginger': {'carbohydrate': 18, 'protein': 1.8, 'calories': 80},
+        'Lettuce': {'carbohydrate': 2, 'protein': 1.4, 'calories': 15},
+        'Onion': {'carbohydrate': 9, 'protein': 1.1, 'calories': 40},
+        'Peas': {'carbohydrate': 14, 'protein': 5.4, 'calories': 81},
+        'Potato': {'carbohydrate': 17, 'protein': 2, 'calories': 77},
+        'Raddish': {'carbohydrate': 4, 'protein': 0.7, 'calories': 16},
+        'Soy Beans': {'carbohydrate': 9, 'protein': 12, 'calories': 173},
+        'Spinach': {'carbohydrate': 3, 'protein': 2.9, 'calories': 23},
+        'Sweetcorn': {'carbohydrate': 19, 'protein': 3.4, 'calories': 86},
+        'Sweetpotato': {'carbohydrate': 20, 'protein': 1.6, 'calories': 86},
+        'Tomato': {'carbohydrate': 4, 'protein': 0.9, 'calories': 18},
+        'Turnip': {'carbohydrate': 6, 'protein': 0.9, 'calories': 28}
+    }
+    
+    # Convert item_name to title case for case-insensitive matching
+    item_name = item_name.title()
+    
+    # Check if item_name exists in the dictionary
+    if item_name in average_content:
+        return f"It is an {item_name} and proteins are: {average_content[item_name]['protein']} gm/100gm and carbohydrates are: {average_content[item_name]['carbohydrate']} gm/100gm and calories are: {average_content[item_name]['calories']} gm/100gm"
+    else:
+        return "Item not found in the list"
 
 def fetch_calories(prediction):
     try:
@@ -122,17 +145,19 @@ def upload_image():
           result = processed_img(save_image_path)
           print("Result from model : ",result)
           print(result)
+          result.capitalize()
+        
+        # cal = h_c_get_calories(result)
 
-        cal = h_c_get_calories(result)
-        print('Calories are ',cal)
-    print(cal)
+
+        # print('Calories are ',cal)
+        yuvi = (get_nutritional_info(result))
+        return jsonify({'Result': yuvi}), 200
+    print(type(cal))
     print(type(jsonify(cal)))
-    return jsonify(cal)
-  return jsonify({'error': 'No image data received'})
-        # if(check_for_fruits==True):
-        #    return jsonify(cal)
-        # else:
-        #    return jsonify(cal)
+    return jsonify({'message': 'POST OKAY'}),200
+  return jsonify({'error': 'No image data received'}),500
+        
         
 
 if __name__ == '__main__':
