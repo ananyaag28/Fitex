@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './meals.css';
 import { useNavigate } from 'react-router-dom';
-import demoData from './recipeInfo.json';
-import demoData2 from './outputMeal.json';
 import RecipeCard from '../../Cards/RecipeCard/RecipeCard';
+import axios from 'axios';
+
 function Meals(props) {
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(true);
 
     const handleInfopageCardClick = () => {
         navigate('/infopage');
@@ -13,21 +14,66 @@ function Meals(props) {
     const [groupedItems, setGroupedItems] = useState([]);
     const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     useEffect(() => {
-        const updatedGroupedItems = [];
-        demoData2.items.forEach(item => {
+        const fetchData = async () => {
+            const options = {
+                method: 'GET',
+                url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/mealplans/generate',
+                params: {
+                    timeFrame: 'week',
+                    targetCalories: '2000',
+                    diet: 'vegan'
+                },
+                headers: {
+                    'X-RapidAPI-Key': 'aa34a5b0c4mshb8fc7bab35348a6p1658e2jsna2e88d11649b',
+                    'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+                }
+            };
+            try{
+                const response = await axios.request(options);
+                const mealPlanData = response.data;
+                console.log(mealPlanData)
+                const recipeIds = mealPlanData.items.map(item => JSON.parse(item.value).id);
+
+                // Creating the params string for the API request
+                const paramsString = recipeIds.join(',');
+
+                const BulkRecipeInfoRequest = {
+                    method: 'GET',
+                    url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/informationBulk',
+                    params: { ids: paramsString,
+                            includeNutrition: 'true'},
+                    headers: {
+                    'X-RapidAPI-Key': 'aa34a5b0c4mshb8fc7bab35348a6p1658e2jsna2e88d11649b',
+                    'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+                    }
+                };
+                const BulkrecipeInfo = await axios.request(BulkRecipeInfoRequest);
+	            console.log(BulkrecipeInfo.data);
+                const BulkrecipeInfodata = BulkrecipeInfo.data;
+                const updatedGroupedItems = [];
+                mealPlanData.items.forEach(item => {
             let { day } = item;
             day--;
             if (!updatedGroupedItems[day]) {
                 updatedGroupedItems[day] = [];
             }
             if (updatedGroupedItems[day].length < 3) {
-                updatedGroupedItems[day].push(demoData.find(recipe => recipe.id === JSON.parse(item.value).id));
+                updatedGroupedItems[day].push(BulkrecipeInfodata.find(recipe => recipe.id === JSON.parse(item.value).id));
             }
         });
         setGroupedItems(updatedGroupedItems);
+        setLoading(false);
+    }
+    catch (error) {
+        console.error(error);
+    }
+    };
+    fetchData();
     }, []);
     console.log(groupedItems)
-
+    if (loading) {
+        return <div>Loading...</div>;
+    }
     return (
         <div className='Meals'>
             <div className="mealsPage-header">

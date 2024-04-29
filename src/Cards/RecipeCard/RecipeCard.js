@@ -1,7 +1,10 @@
 import './recipeCard.css';
 
 export default function RecipeCard({ data }) {
+    console.log("datatatata", data)
     return (
+        <a href='/Fitex'>
+
         <div className='recipeCard'>
             <img src={data?.image}></img>
             <h3>{data?.title}</h3>
@@ -13,5 +16,6 @@ export default function RecipeCard({ data }) {
                 }
             </div>
         </div>
+                </a>
     );
 }
