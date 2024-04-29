@@ -3,6 +3,8 @@ import './meals.css';
 import { useNavigate } from 'react-router-dom';
 import RecipeCard from '../../Cards/RecipeCard/RecipeCard';
 import axios from 'axios';
+import mealPlanData from './outputMeal.json'
+import BulkrecipeInfodata from './recipeInfo.json'
 
 function Meals(props) {
     const navigate = useNavigate();
@@ -29,13 +31,15 @@ function Meals(props) {
                 }
             };
             try{
-                const response = await axios.request(options);
-                const mealPlanData = response.data;
+                // const response = await axios.request(options);
+                // const mealPlanData = response.data;
+
                 console.log(mealPlanData)
                 const recipeIds = mealPlanData.items.map(item => JSON.parse(item.value).id);
 
                 // Creating the params string for the API request
                 const paramsString = recipeIds.join(',');
+                console.log(paramsString)
 
                 const BulkRecipeInfoRequest = {
                     method: 'GET',
@@ -47,9 +51,10 @@ function Meals(props) {
                     'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
                     }
                 };
-                const BulkrecipeInfo = await axios.request(BulkRecipeInfoRequest);
-	            console.log(BulkrecipeInfo.data);
-                const BulkrecipeInfodata = BulkrecipeInfo.data;
+                // const BulkrecipeInfo = await axios.request(BulkRecipeInfoRequest);
+	            // console.log(BulkrecipeInfo.data);
+                // const BulkrecipeInfodata = BulkrecipeInfo.data;
+
                 const updatedGroupedItems = [];
                 mealPlanData.items.forEach(item => {
             let { day } = item;

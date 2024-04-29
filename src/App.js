@@ -15,6 +15,7 @@ import BMI from './components/BMI/BMI';
 import BMICard from './Cards/BMICard/BMICard';
 import Home from './pages/Home/Home';
 import Meals from './pages/Meals/Meals';
+import RecipePage from './pages/Recipepage/RecipePage';
 
 function App() {
 
@@ -61,6 +62,8 @@ function App() {
           <Route path='/bmicard' element={<BMICard userData={userData} updateUserData={updateUserData}/>}></Route>
           <Route path='/homepage' element={<Home userData={userData} updateUserData={updateUserData}/>}></Route>
           <Route path='/meals' element={<Meals userData={userData} updateUserData={updateUserData}/>}></Route>
+            {/* Define the route for the recipe page with a dynamic parameter */}
+          <Route path='/meals/:id' element={<RecipePage />} />
         
         </Routes>
       </Router>
