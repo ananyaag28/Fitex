@@ -1,0 +1,53 @@
+.Meals{
+    background-color: #feedcb;
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+}
+
+.infopageCard{
+    width: 16vh;
+    height:  16vh;
+    border-radius: 50%;
+    background-image: url(../../../public/Icons/user-icon.png);
+    background-position: center;
+    background-size: cover; 
+    float: right;
+    margin-top:-8vh; 
+    margin-right: 5vh;
+    margin-right: 2vh;;
+    cursor: pointer;   
+}
+.cardsCover{
+    height: 80vh;
+    width: 80vw;
+    margin: auto;
+    /* margin-top: 4vw; */
+    padding-bottom: 5vw;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+.mealsPage-header{
+    background-image: url(../../../public/Images/1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 6vw;
+    margin-top: 0;
+    padding: 5vw 0;
+    box-shadow: 0 10px 40px 10px #00000043;
+}
+.days{
+    display: flex;
+    gap: 40px;
+}
+.cardsCover::-webkit-scrollbar{
+    background-color: transparent;
+    width: 10px;
+}
+.cardsCover::-webkit-scrollbar-thumb{
+    background-color: #ffffffa8;
+}

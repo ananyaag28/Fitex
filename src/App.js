@@ -14,6 +14,7 @@ import SnapCard from './Cards/SnapCard/SnapCard';
 import BMI from './components/BMI/BMI';
 import BMICard from './Cards/BMICard/BMICard';
 import Home from './pages/Home/Home';
+import Meals from './pages/Meals/Meals';
 
 function App() {
 
@@ -59,6 +60,7 @@ function App() {
           <Route path='/bmipage' element={<BMI userData={userData} updateUserData={updateUserData}/>}></Route>
           <Route path='/bmicard' element={<BMICard userData={userData} updateUserData={updateUserData}/>}></Route>
           <Route path='/homepage' element={<Home userData={userData} updateUserData={updateUserData}/>}></Route>
+          <Route path='/meals' element={<Meals userData={userData} updateUserData={updateUserData}/>}></Route>
         
         </Routes>
       </Router>

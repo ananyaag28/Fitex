@@ -1,0 +1,174 @@
+{
+    "name": "MealPlan 1714379036204",
+    "publishAsPublic": true,
+    "items": [
+      {
+        "slot": 1,
+        "position": 0,
+        "mealPlanId": 0,
+        "type": "RECIPE",
+        "day": 1,
+        "value": "{\"id\":1100990,\"imageType\":\"jpg\",\"title\":\"Blueberry, Chocolate & Cocao Superfood Pancakes - Gluten-Free/Paleo/Vegan\"}"
+      },
+      {
+        "slot": 2,
+        "position": 0,
+        "mealPlanId": 0,
+        "type": "RECIPE",
+        "day": 1,
+        "value": "{\"id\":652417,\"imageType\":\"jpg\",\"title\":\"Moroccan chickpea and lentil stew\"}"
+      },
+      {
+        "slot": 3,
+        "position": 0,
+        "mealPlanId": 0,
+        "type": "RECIPE",
+        "day": 1,
+        "value": "{\"id\":660101,\"imageType\":\"jpg\",\"title\":\"Simple Garlic Pasta\"}"
+      },
+      {
+        "slot": 1,
+        "position": 0,
+        "mealPlanId": 0,
+        "type": "RECIPE",
+        "day": 2,
+        "value": "{\"id\":659604,\"imageType\":\"jpg\",\"title\":\"Scrambled tofu with rocket\"}"
+      },
+      {
+        "slot": 2,
+        "position": 0,
+        "mealPlanId": 0,
+        "type": "RECIPE",
+        "day": 2,
+        "value": "{\"id\":653251,\"imageType\":\"jpg\",\"title\":\"Noodles and Veggies With Peanut Sauce\"}"
+      },
+      {
+        "slot": 3,
+        "position": 0,
+        "mealPlanId": 0,
+        "type": "RECIPE",
+        "day": 2,
+        "value": "{\"id\":649921,\"imageType\":\"jpg\",\"title\":\"Lentil Fritters (Parippu Vada)\"}"
+      },
+      {
+        "slot": 1,
+        "position": 0,
+        "mealPlanId": 0,
+        "type": "RECIPE",
+        "day": 3,
+        "value": "{\"id\":658624,\"imageType\":\"jpg\",\"title\":\"Roasted Plum Oatmeal\"}"
+      },
+      {
+        "slot": 2,
+        "position": 0,
+        "mealPlanId": 0,
+        "type": "RECIPE",
+        "day": 3,
+        "value": "{\"id\":715769,\"imageType\":\"jpg\",\"title\":\"Broccolini Quinoa Pilaf\"}"
+      },
+      {
+        "slot": 3,
+        "position": 0,
+        "mealPlanId": 0,
+        "type": "RECIPE",
+        "day": 3,
+        "value": "{\"id\":640982,\"imageType\":\"jpg\",\"title\":\"Cuban Black Beans & Rice\"}"
+      },
+      {
+        "slot": 1,
+        "position": 0,
+        "mealPlanId": 0,
+        "type": "RECIPE",
+        "day": 4,
+        "value": "{\"id\":640443,\"imageType\":\"jpg\",\"title\":\"Cranberry-Ginger Oatmeal With Toasted Hazelnuts\"}"
+      },
+      {
+        "slot": 2,
+        "position": 0,
+        "mealPlanId": 0,
+        "type": "RECIPE",
+        "day": 4,
+        "value": "{\"id\":635082,\"imageType\":\"jpg\",\"title\":\"Black Beans & Green Peas With Rice & Barley\"}"
+      },
+      {
+        "slot": 3,
+        "position": 0,
+        "mealPlanId": 0,
+        "type": "RECIPE",
+        "day": 4,
+        "value": "{\"id\":657651,\"imageType\":\"jpg\",\"title\":\"Quick Veggie Stir-Fry\"}"
+      },
+      {
+        "slot": 1,
+        "position": 0,
+        "mealPlanId": 0,
+        "type": "RECIPE",
+        "day": 5,
+        "value": "{\"id\":635446,\"imageType\":\"jpg\",\"title\":\"Blueberry Cinnamon Porridge\"}"
+      },
+      {
+        "slot": 2,
+        "position": 0,
+        "mealPlanId": 0,
+        "type": "RECIPE",
+        "day": 5,
+        "value": "{\"id\":1098387,\"imageType\":\"jpg\",\"title\":\"Quinoa Salad with Barberries & Nuts\"}"
+      },
+      {
+        "slot": 3,
+        "position": 0,
+        "mealPlanId": 0,
+        "type": "RECIPE",
+        "day": 5,
+        "value": "{\"id\":642121,\"imageType\":\"jpg\",\"title\":\"Easy Tabouleh\"}"
+      },
+      {
+        "slot": 1,
+        "position": 0,
+        "mealPlanId": 0,
+        "type": "RECIPE",
+        "day": 6,
+        "value": "{\"id\":640194,\"imageType\":\"jpg\",\"title\":\"Country Breakfast: Tofu and Veggie Scramble With Home Fries\"}"
+      },
+      {
+        "slot": 2,
+        "position": 0,
+        "mealPlanId": 0,
+        "type": "RECIPE",
+        "day": 6,
+        "value": "{\"id\":641387,\"imageType\":\"jpg\",\"title\":\"Delicious Creamy Lentils and Chestnuts Soup\"}"
+      },
+      {
+        "slot": 3,
+        "position": 0,
+        "mealPlanId": 0,
+        "type": "RECIPE",
+        "day": 6,
+        "value": "{\"id\":642540,\"imageType\":\"jpg\",\"title\":\"Falafel Burgers\"}"
+      },
+      {
+        "slot": 1,
+        "position": 0,
+        "mealPlanId": 0,
+        "type": "RECIPE",
+        "day": 7,
+        "value": "{\"id\":663867,\"imageType\":\"jpg\",\"title\":\"Tropical Steel Cut Oatmeal\"}"
+      },
+      {
+        "slot": 2,
+        "position": 0,
+        "mealPlanId": 0,
+        "type": "RECIPE",
+        "day": 7,
+        "value": "{\"id\":982371,\"imageType\":\"jpg\",\"title\":\"Instant Pot Quinoa Grain Bowl\"}"
+      },
+      {
+        "slot": 3,
+        "position": 0,
+        "mealPlanId": 0,
+        "type": "RECIPE",
+        "day": 7,
+        "value": "{\"id\":663150,\"imageType\":\"jpg\",\"title\":\"Thai Savory Brown Fried Rice\"}"
+      }
+    ]
+  }
