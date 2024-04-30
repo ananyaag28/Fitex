@@ -112,32 +112,18 @@ function Meals({setPriceData}) {
         {groupedItems[0] &&
           groupedItems.map((day, i) => {
             console.log(day);
-            const data = day[0];
-            const idRecipe = data.id;
-            console.log(idRecipe);
-            const Price = data.pricePerServing;
+            
             return (
               <>
                 <h2>{weekDays[i]}</h2>
                 <div className="days">
-                  <a
-                    href={`/meals/${idRecipe}`}
-                    onClick={() => handlePriceDataUpdate(Price)}
-                  >
+                  
                     <RecipeCard data={day[0]} key={`${i} 1`} />
-                  </a>
-                  <a
-                    href={`/meals/${idRecipe}`}
-                    onClick={() => handlePriceDataUpdate(Price)}
-                  >
+                 
                     <RecipeCard data={day[1]} key={`${i} 2`} />
-                  </a>
-                  <a
-                    href={`/meals/${idRecipe}`}
-                    onClick={() => handlePriceDataUpdate(Price)}
-                  >
+                  
                     <RecipeCard data={day[2]} key={`${i} 3`} />
-                  </a>
+                 
                 </div>
               </>
             );
