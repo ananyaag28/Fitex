@@ -12,10 +12,11 @@ const IngredientCard = ({ ingredient }) => {
   );
 };
 
-const RecipePage = (props) => {
+const RecipePage = (props, {priceData}) => {
   const [recipeDataa, setRecipeData] = useState(null);
   let params = useParams()
   console.log(props);
+  console.log(priceData);
   const recipeId = params.id;
   console.log(recipeId)
 
@@ -71,6 +72,8 @@ const RecipePage = (props) => {
           ))}
         </div>
       ))}
+
+      <button> Want to order?</button>
     </div>
 );
 };
