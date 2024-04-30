@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import recipeData from "./recipeJson.json";
 import { useParams } from "react-router-dom";
-import './recipePage.css'
 
 const IngredientCard = ({ ingredient }) => {
   return (

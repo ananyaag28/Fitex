@@ -130,7 +130,7 @@ export default function MainForm() {
                                         onClick={() => {
                                             setProgressBar(current - 1);
                                             setCurrent(current - 1);
-                                            document.getElementById("payment").classList.remove("active");
+                                            document.getElementById("personal").classList.remove("active");
                                         }}
                                     />
                                 </fieldset>
@@ -170,7 +170,7 @@ export default function MainForm() {
                                         onClick={() => {
                                             setProgressBar(current - 1);
                                             setCurrent(current - 1);
-                                            document.getElementById("confirm").classList.remove("active");
+                                            document.getElementById("payment").classList.remove("active");
 
                                         }}
                                     />
