@@ -14,10 +14,10 @@ import Dob from "../DOB/Dob";
 import Gender from "../Gender/Gender";
 import Height from "../Height/Height";
 import Weight from "../Weight/Weight";
+import { BACKEND_URL } from '../../values'
 
 const FormSignUp = ({ setIsSnackbarOpen, userData, setUserData, view, setView }) => {
   
-  const BACKEND_URL = ""
   const navigate = useNavigate();
   const sellerFormRef = useRef(null);
   const investorFormRef = useRef(null);
@@ -103,7 +103,9 @@ const FormSignUp = ({ setIsSnackbarOpen, userData, setUserData, view, setView })
       )
       if (res.data.message) {
         setIsSnackbarOpen(() => ({ color: "success", message: res.data.message }))
-        navigate('/login')
+        setTimeout(() => {
+          navigate('/login')
+        }, 1000);
       }
       else if (res.data.error) {
         console.log(res.data.error)
@@ -117,16 +119,19 @@ const FormSignUp = ({ setIsSnackbarOpen, userData, setUserData, view, setView })
 
   }
 
-  const signUpSeller = async () => {
-
+  const signUpCook = async (e) => {
+    e.preventDefault()
+    setLoading(true)
     try {
-      const res = await axios.post(`${BACKEND_URL}/auth/signup/seller`,
+      const res = await axios.post(`${BACKEND_URL}/auth/signup/cook`,
         { ...userData.modelData },
         { withCredentials: true }
       )
       if (res.data.message) {
         setIsSnackbarOpen(() => ({ color: "success", message: res.data.message }))
-        navigate('/login')
+        setTimeout(() => {
+          navigate('/login')
+        }, 1000);
       }
       else if (res.data.error) {
         console.log(res.data.error)
@@ -176,7 +181,7 @@ const FormSignUp = ({ setIsSnackbarOpen, userData, setUserData, view, setView })
 
           </div>
           <div className="mt-2">
-            <p>Have an account already? Click Here to <Link className="text-blue-500 hover:underline" href={"/login"}>login</Link></p>
+            <p>Have an account already? Click Here to <Link className="text-blue-500 hover:underline" to={"/login"}>login</Link></p>
           </div>
         </motion.div>
       )}
@@ -243,7 +248,7 @@ const FormSignUp = ({ setIsSnackbarOpen, userData, setUserData, view, setView })
               />
             </div>
 
-            <ColorLoadingButton loading={loading} variant="contained" type="submit" onClick={(e) => { e.preventDefault(); signUpSeller() }}> Submit</ColorLoadingButton>
+            <ColorLoadingButton loading={loading} variant="contained" type="submit" onClick={(e) => { signUpCook(e) }}> Submit</ColorLoadingButton>
           </form>
         </motion.div>
       )}

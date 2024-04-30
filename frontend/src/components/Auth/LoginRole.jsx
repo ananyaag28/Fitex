@@ -70,7 +70,7 @@ const LoginRole = ({existingSellerStatus, existingRole, userData, setUserData, v
       </div>
 
       <div className="text-left mt-2">
-        <p>Don't have an existing account? Click Here to <Link className="text-blue-500 hover:underline" href={"/signup"}>SignUp</Link></p>
+        <p>Don't have an existing account? Click Here to <Link className="text-blue-500 hover:underline" to={"/signup"}>SignUp</Link></p>
       </div>
     </>
   );

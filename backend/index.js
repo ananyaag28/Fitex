@@ -2,8 +2,7 @@ const express = require('express')
 const cookieParser = require("cookie-parser");
 const cors = require('cors')
 const authRouter = require('./routes/authRoutes');
-const dealRouter = require('./routes/dealRoutes')
-const sellerRouter = require('./routes/sellerRoutes')
+const orderRouter = require('./routes/orderRoutes')
 
 const PORT = process.env.PORT || 3001
 const app = express()
@@ -20,8 +19,7 @@ app.use(
 
 
 app.use('/auth', authRouter)
-app.use('/deal', dealRouter)
-app.use('/seller', sellerRouter)
+app.use('/order', orderRouter)
 
 app.listen(PORT, () => {
     console.log(`App is listening on PORT: ${PORT}`)

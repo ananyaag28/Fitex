@@ -11,16 +11,14 @@ import { useEffect } from "react";
 import axios from "axios";
 import LoadingButton from '@mui/lab/LoadingButton';
 import { Link } from "react-router-dom";
+import { BACKEND_URL } from '../../values'
 
 const LoginForm = ({ setIsSnackbarOpen, existingEmail, userData, setUserData, view, setView }) => {
 
-  const BACKEND_URL = ""
   const navigate = useNavigate()
   const sellerFormRef = useRef(null);
   const investorFormRef = useRef(null);
   const [loading, setLoading] = useState(false)
-  const [submitLoading, setSubmitLoading] = useState(false)
-  const [error, setError]= useState(null)
 
 
   const handler = (e) => {
@@ -28,28 +26,12 @@ const LoginForm = ({ setIsSnackbarOpen, existingEmail, userData, setUserData, vi
     let field = e.target.name
     let value = e.target.value
 
-    if (field == "logo") {
-      value = e.target.files[0]
-    }
-
-    if (view == "CONSUMER") {
-      setUserData((prev) => ({
-        ...prev,
-        modelData: {
-          ...prev.modelData,
-          metaMaskId: e.target.value,
-        },
-      }));
-    }
-
-    else {
-      setUserData((prev) => ({
-        ...prev, modelData: {
-          ...prev.modelData,
-          [field]: value
-        }
-      }))
-    }
+    setUserData((prev) => ({
+      ...prev, modelData: {
+        ...prev.modelData,
+        [field]: value
+      }
+    }))
   };
 
   const ColorButton = styled(Button)(({ theme }) => ({
@@ -78,7 +60,9 @@ const LoginForm = ({ setIsSnackbarOpen, existingEmail, userData, setUserData, vi
 
 
 
-  const loginConsumer = async () => {
+  const loginConsumer = async (e) => {
+    e.preventDefault()
+    setLoading(true)
     try {
       const res = await axios.post(`${BACKEND_URL}/auth/login/consumer`,
         {...userData.modelData},
@@ -86,7 +70,7 @@ const LoginForm = ({ setIsSnackbarOpen, existingEmail, userData, setUserData, vi
       )
       if(res.data.message) {
         setIsSnackbarOpen(() => ({ color: "success", message: res.data.message }))
-        navigate('/Fitex')
+        navigate('/fitex')
       }
       else if(res.data.error) {
         console.log(res.data.error)
@@ -99,22 +83,24 @@ const LoginForm = ({ setIsSnackbarOpen, existingEmail, userData, setUserData, vi
     }
   }
 
-  const loginCook = async () => {
+  const loginCook = async (e) => {
+    e.preventDefault()
+    setLoading(true)
     try {
-      setSubmitLoading(true)
+      setLoading(true)
       const response = await axios.post(`${BACKEND_URL}/auth/login/cook`,
         { ...userData.modelData },
         { withCredentials: true }
       )
       if (response.data.error) {
-        console.log(response.data.error)
         setIsSnackbarOpen(() => ({ color: "danger", message: response.data.error }))
+        setLoading(false)
       }
       else {
         navigate('/cook')
       }
     } catch (error) {
-      setSubmitLoading(false)
+      setLoading(false)
       console.log(error)
     }
 
@@ -177,7 +163,7 @@ const LoginForm = ({ setIsSnackbarOpen, existingEmail, userData, setUserData, vi
                 />
               </div>
 
-              <ColorLoadingButton loading={loading} variant="contained" type="submit" onClick={(e) => { e.preventDefault(); loginConsumer() }}> Submit</ColorLoadingButton>
+              <ColorLoadingButton loading={loading} variant="contained" type="submit" onClick={(e) => { loginConsumer(e) }}> Submit</ColorLoadingButton>
 
             </form>
           </div>
@@ -237,7 +223,7 @@ const LoginForm = ({ setIsSnackbarOpen, existingEmail, userData, setUserData, vi
                 onChange={(e) => { handler(e) }}
               />
             </div>
-            <ColorLoadingButton loading={submitLoading} onClick={()=>{loginCook()}} loadingPosition="end" variant="contained" >Submit</ColorLoadingButton>
+            <ColorLoadingButton loading={loading} onClick={(e) => { loginCook(e) }} loadingPosition="end" variant="contained" >Submit</ColorLoadingButton>
             <div className="text-sm">
               <p>Don't have an existing account? Click Here to <Link className="text-blue-500 hover:underline" to={"/signup"}>Sign Up</Link></p>
             </div>
