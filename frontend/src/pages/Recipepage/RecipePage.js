@@ -48,9 +48,9 @@ const RecipePage = (props) => {
   }, [recipeId]);
 
   return (
-    <div className="bg-[#abddc4] p-8 flex flex-col items-center">
+    <div className="bg-[rgb(8,164,132)] p-8 flex flex-col items-center">
     <div className=" bg-[#f5f5dc] p-8 flex flex-col text-grey-900 rounded-3xl m-5">
-      <div className="bg-[#abddc4] rounded-lg p-4 mb-4">
+      <div className="bg-[#abddc]4 rounded-lg p-4 mb-4">
         <h1 className="text-4xl font-bold">Recipe Page</h1>
       </div> <br />
       {recipeData.map((recipe, index) => (

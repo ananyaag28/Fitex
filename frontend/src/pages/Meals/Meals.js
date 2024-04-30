@@ -102,21 +102,20 @@ function Meals({setPriceData}) {
 
   return (
     <div className="Meals">
-      <div className="mealsPage-header">
-        <h1>My Diet Plan</h1>
-
-        <div className="infopageCard" onClick={handleInfopageCardClick}></div>
-        <h3 className="TargetCalories">Targeted Calories per day - </h3>
-      </div>
-      <div className="cardsCover">
+      <div className="mealsPage-header bg-[#f5f5dc] rounded-lg p-4 shadow-lg flex flex-col items-start justify-between">
+      <h1 className="text-3xl font-bold text-[rgb(8,164,132)] mb-4">My Diet Plan</h1>
+      <div className="infopageCard" onClick={handleInfopageCardClick}></div>
+      <h3 className="TargetCalories text-lg font-semibold text-[rgb(8,164,132)]">Targeted Calories per day - </h3>
+      </div><br /><br />
+      <div className="cardsCover bg-[#f5f5dc] p-6 rounded-lg shadow-lg flex flex-col items-center justify-between overflow-auto">
         {groupedItems[0] &&
           groupedItems.map((day, i) => {
             console.log(day);
             
             return (
               <>
-                <h2>{weekDays[i]}</h2>
-                <div className="days">
+                <h2 className="text-4xl font-semibold text-grey-900 mb-4">{weekDays[i]}</h2>
+                <div className="days mx-4 flex flex-wrap justify-center">
                   
                     <RecipeCard data={day[0]} key={`${i} 1`} />
                  
