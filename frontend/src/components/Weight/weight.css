@@ -1,0 +1,32 @@
+.Weight-icon{
+    margin-top: 20px;
+    width: 128px;
+    height: 128px;
+    background-image: url(../../../public/Icons/weight-icon.png);
+    display: inline-block;
+    justify-content:center;
+    align-items: center;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.WeightInput{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin: auto;
+}
+
+.WeightInput label{
+    font-size:larger;
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+
+.WeightInput input{
+    width: 100px;
+    font-size: larger;
+
+}
+

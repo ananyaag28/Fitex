@@ -1,0 +1,57 @@
+
+.Height-icon{
+margin-top: 20px;
+width: 128px;
+height: 128px;
+background-image: url(../../../public/Icons/height-icon.png);
+display: inline-block;
+justify-content:center;
+align-items: center;
+margin-bottom: 5vh;
+}
+.HeightSelect{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin: auto;   
+}
+
+.HeightFeets,.HeigthInches
+{
+    padding: 16px;
+ 
+}
+
+.HeightFeets label,.HeigthInches label {
+    font-size:larger;
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+.HeightFeets select,.HeigthInches select{
+width: 100px;
+font-size: larger;
+}
+
+.HeightFeets option,.HeigthInches option{
+    font-size: large;
+    background-color: var(--secondary-color);
+}
+
+.HeightNext{
+    margin-top: 12vh;
+    border: none;
+  }
+  
+  .HeightNext button{
+    border: none;
+  }
+  
+  .HeightNext img{
+    width:64px;
+    height:64px;
+    border: none;
+    background-image: url('../../../public/Icons/next-icon.png');
+    background-size: cover;
+  }
+  

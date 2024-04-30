@@ -1,0 +1,27 @@
+.Dob{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0; 
+}
+
+
+.DobImage{
+    background: none;
+    width: 128px;
+    height:128px;
+    background-image: url(../../../public/Icons/calendar-icon.png);
+    background-size: cover;
+    display: inline-block;
+}
+.DobInput{
+    margin-top: 5vh;
+}
+
+.DobInput label{
+    font-size:larger;
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+

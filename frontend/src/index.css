@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.swiper-pagination-bullets {
+  display: none;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@keyframes slideLeftOut {
+  from {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100px);
+    opacity: 0;
+    display: none;
+  }
+}
+
+.slide-left-out {
+  animation: slideLeftOut 200ms forwards;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+}
+
+.datePicker .MuiOutlinedInput-input {
+  padding: 8px !important;
+}
+
+.datePicker .MuiInputLabel-sizeMedium {
+  margin-top: -8px;
+}
+
+.datePicker .MuiInputLabel-shrink {
+  margin-top: 0px !important;
+  z-index: 10;
+}
+
+.datePicker .MuiStack-root {
+  padding: 0;
+  overflow: visible;
+}
+
+.datePicker .MuiTextField-root {
+  width: 100% !important;
+}
