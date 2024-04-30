@@ -76,7 +76,7 @@ const loginConsumer = async (req, res) => {
             sameSite: "none",
           })
           .status(200)
-          .json({ message: "Consumer Logged In Successfully" });
+          .json({ message: "Consumer Logged In Successfully", data: req.consumer });
       }
       else {
         return res.status(200).json({ error: "Incorrect Password" });

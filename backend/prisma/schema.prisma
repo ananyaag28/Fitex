@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -32,13 +26,14 @@ model Cook {
   email    String @unique
   name     String
   password String
-  order    Order?
 }
 
 model Order {
-  id         Int      @id @default(autoincrement())
-  consumer   Consumer @relation(fields: [consumerId], references: [id])
-  consumerId Int
-  cook       Cook     @relation(fields: [cookId], references: [id])
-  cookId     Int      @unique
+  id            Int      @id @default(autoincrement())
+  consumerId    Int
+  cookId        BigInt   @unique
+  orderPlaced   Boolean  @default(false)
+  orderAccepted Boolean  @default(false)
+  recipeId      BigInt
+  consumer      Consumer @relation(fields: [consumerId], references: [id])
 }

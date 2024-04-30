@@ -1,7 +1,23 @@
-import React from 'react'
+
 import Fitex from './fitex.png'
+import React, { useEffect } from "react";
+import axios from "axios";
+
+import { BACKEND_URL } from '../../values'
 
 const Cook = () => {
+  useEffect(() => {
+    const fetchBmi = async () => {
+      try {
+        const res = await axios.get(`${BACKEND_URL}/consumer`);
+        const BMI = res.data[0].currentBmi;
+      } catch (error) {
+        console.log("Error Logging In Consumer");
+      }
+    };
+    fetchBmi();
+  }, []);
+
   return (
 <div class="bg-[rgb(8,164,132)] min-h-screen flex items-center justify-center ">
   <div className='absolute left-0 top-0 h-1/10'><img className="h-[110px]" src={Fitex}/></div>
