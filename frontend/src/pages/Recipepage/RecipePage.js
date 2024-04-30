@@ -40,6 +40,7 @@ const RecipePage = (props) => {
       console.log("Error Logging In Consumer");
     }
   };
+
   useEffect(() => {
     const fetchRecipeData = async () => {
       try {
@@ -67,25 +68,19 @@ const RecipePage = (props) => {
   }, [recipeId]);
 
   return (
-    <div className="bg-[#abddc4] p-8 flex flex-col items-center">
+    <div className="bg-[rgb(8,164,132)] p-8 flex flex-col items-center">
       <div className=" bg-[#f5f5dc] p-8 flex flex-col text-grey-900 rounded-3xl m-5">
-        <div className="bg-[#abddc4] rounded-lg p-4 mb-4">
+        <div className="bg-[#abddc]4 rounded-lg p-4 mb-4">
           <h1 className="text-4xl font-bold">Recipe Page</h1>
-        </div>{" "}
-        <br />
+        </div> <br />
         {recipeData.map((recipe, index) => (
           <div key={index} className="mb-8">
             <h2 className="text-2xl font-bold mb-2">{recipe.name}</h2>
             {recipe.steps.map((step, stepIndex) => (
               <div key={stepIndex} className="mb-4">
-                <h3 className="text-xl font-semibold mb-1">
-                  Step {step.number}
-                </h3>
-                <br />
-                <p className="mb-2">{step.step}</p>
-                <br />
-                <h4 className="text-lg font-semibold mb-1">Ingredients:</h4>
-                <br />
+                <h3 className="text-xl font-semibold mb-1">Step {step.number}</h3><br />
+                <p className="mb-2">{step.step}</p><br />
+                <h4 className="text-lg font-semibold mb-1">Ingredients:</h4><br />
                 <div className="ingredient-cards flex flex-wrap">
                   {step.ingredients.map((ingredient, ingredientIndex) => (
                     <IngredientCard
@@ -93,36 +88,21 @@ const RecipePage = (props) => {
                       ingredient={ingredient}
                     />
                   ))}
-                </div>
-                <br />
+                </div><br />
                 {step.equipment.length > 0 && (
                   <>
-                    <h4 className="text-lg font-semibold mb-1">Equipment:</h4>
-                    <br />
+                    <h4 className="text-lg font-semibold mb-1">Equipment:</h4><br />
                     <ul className="list-disc pl-5">
                       {step.equipment.map((equip, equipIndex) => (
                         <IngredientCard key={equipIndex} ingredient={equip} />
                       ))}
-                    </ul>
-                    <br />
+                    </ul><br />
                   </>
                 )}
               </div>
             ))}
           </div>
         ))}
-        <div className="flex justify-evenly items-center mx-6">
-          <span className="text-lg font-semibold mt-2 bg-[#abddc4] px-4 py-4 rounded-lg">
-            Total cost: ${priceData} per serving
-          </span>
-          <button
-            className="bg-[rgb(8,164,132)] hover:bg-green-700 text-white font-bold py-5 px-4 rounded-lg text-xl"
-            onClick={handleOrder}
-          >
-            {" "}
-            Want to order?{" "}
-          </button>
-        </div>
       </div>
     </div>
   );
