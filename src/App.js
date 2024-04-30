@@ -16,6 +16,7 @@ import BMICard from './Cards/BMICard/BMICard';
 import Home from './pages/Home/Home';
 import Meals from './pages/Meals/Meals';
 import RecipePage from './pages/Recipepage/RecipePage';
+import MainForm from './pages/mainForm/MainForm';
 
 function App() {
 
@@ -64,6 +65,7 @@ function App() {
           <Route path='/meals' element={<Meals userData={userData} updateUserData={updateUserData}/>}></Route>
             {/* Define the route for the recipe page with a dynamic parameter */}
           <Route path='/meals/:id' element={<RecipePage />} />
+          <Route path='/mainform' element={<MainForm userData={userData} updateUserData={updateUserData}/>}></Route>
         
         </Routes>
       </Router>
