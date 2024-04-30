@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import recipeData from "./recipeJson.json";
 import { useParams } from "react-router-dom";
+import './recipePage.css'
 
 const IngredientCard = ({ ingredient }) => {
   return (
@@ -48,8 +49,8 @@ const RecipePage = (props) => {
   }, [recipeId]);
 
   return (
-    <div>
-      <h1>Recipe Page</h1>
+    <div className=" bg-orange-200 p-32 flex flex-col">
+      <h1 className=" font-bold">Recipe Page</h1>
       {recipeData.map((recipe, index) => (
         <div key={index}>
           <h2>{recipe.name}</h2>
