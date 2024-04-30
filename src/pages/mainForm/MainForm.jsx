@@ -21,7 +21,7 @@ export default function MainForm() {
             <div className="row justify-content-center">
                 <div className="col-11 col-sm-10 col-md-10 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2">
                     <div className="card px-0 pt-4 pb-0 mt-3 mb-3">
-                        <h2 id="heading">Sign Up Your User Account</h2>
+                        <h2 id="heading">Weight Loss Quiz</h2>
                         <p>Fill all form field to go to next step</p>
                         <form id="msform">
                             {/* progressbar */}
@@ -55,7 +55,7 @@ export default function MainForm() {
                                     <div className="form-card">
                                         <div className="row">
                                             <div className="col-7">
-                                                <h2 className="fs-title">Account Information:</h2>
+                                                <h2 className="fs-title">Weight Loss Quiz</h2>
                                             </div>
                                             <div className="col-5">
                                                 <h2 className="steps">Step 1 - 4</h2>
