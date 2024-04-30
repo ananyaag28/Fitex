@@ -1,8 +1,12 @@
 import "./recipeCard.css";
 
 export default function RecipeCard({ data }) {
+  
+  const idRecipe = data.id;
+  console.log(idRecipe);
+  const Price = data.pricePerServing;
   return (
-    // <a href={`/meals/${idRecipe}`} onClick={handlePriceDataUpdate}>
+    <a href={`/meals/${idRecipe}/${Price}`}>
       <div className="recipeCard">
         <img src={data?.image}></img>
         <h3>{data?.title}</h3>
@@ -23,6 +27,6 @@ export default function RecipeCard({ data }) {
           )}
         </div>
       </div>
-    // </a>
+    </a>
   );
 }

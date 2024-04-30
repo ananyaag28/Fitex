@@ -20,7 +20,6 @@ import MainForm from './pages/mainForm/MainForm';
 
 function App() {
 
-  const [priceData, setPriceData] = useState(0)
 
   const [userData, setUserData] = useState({
     dob: null,
@@ -64,9 +63,9 @@ function App() {
           <Route path='/bmipage' element={<BMI userData={userData} updateUserData={updateUserData}/>}></Route>
           <Route path='/bmicard' element={<BMICard userData={userData} updateUserData={updateUserData}/>}></Route>
           <Route path='/homepage' element={<Home userData={userData} updateUserData={updateUserData}/>}></Route>
-          <Route path='/meals' element={<Meals userData={userData} setPriceData={setPriceData} updateUserData={updateUserData}/>}></Route>
+          <Route path='/meals' element={<Meals userData={userData} updateUserData={updateUserData}/>}></Route>
             {/* Define the route for the recipe page with a dynamic parameter */}
-          <Route path='/meals/:id' priceData={priceData} element={<RecipePage />} />
+          <Route path='/meals/:id/:price' element={<RecipePage />} />
           <Route path='/mainform' element={<MainForm userData={userData} updateUserData={updateUserData}/>}></Route>
         
         </Routes>

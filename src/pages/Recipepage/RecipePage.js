@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import recipeData from './recipeJson.json';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import recipeData from "./recipeJson.json";
+import { useParams } from "react-router-dom";
 
 const IngredientCard = ({ ingredient }) => {
   return (
@@ -12,32 +12,37 @@ const IngredientCard = ({ ingredient }) => {
   );
 };
 
-const RecipePage = (props, {priceData}) => {
+const RecipePage = (props) => {
   const [recipeDataa, setRecipeData] = useState(null);
-  let params = useParams()
+  let params = useParams();
   console.log(props);
+  const priceData = params.price;
   console.log(priceData);
   const recipeId = params.id;
-  console.log(recipeId)
+  console.log(recipeId);
 
   useEffect(() => {
     const fetchRecipeData = async () => {
       try {
-        const recipeData = await axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${recipeId}/analyzedInstructions`, {
-          params: {
-            stepBreakdown: 'true'
-          },
-          headers: {
-            'X-RapidAPI-Key': 'aa34a5b0c4mshb8fc7bab35348a6p1658e2jsna2e88d11649b',
-            'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+        const recipeData = await axios.get(
+          `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${recipeId}/analyzedInstructions`,
+          {
+            params: {
+              stepBreakdown: "true",
+            },
+            headers: {
+              "X-RapidAPI-Key":
+                "aa34a5b0c4mshb8fc7bab35348a6p1658e2jsna2e88d11649b",
+              "X-RapidAPI-Host":
+                "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+            },
           }
-        });
+        );
         setRecipeData(recipeData.data);
       } catch (error) {
-        console.error('Error fetching recipe data:', error);
+        console.error("Error fetching recipe data:", error);
       }
     };
-    
 
     // fetchRecipeData();
   }, [recipeId]);
@@ -55,7 +60,10 @@ const RecipePage = (props, {priceData}) => {
               <h4>Ingredients:</h4>
               <div className="ingredient-cards">
                 {step.ingredients.map((ingredient, ingredientIndex) => (
-                  <IngredientCard key={ingredientIndex} ingredient={ingredient} />
+                  <IngredientCard
+                    key={ingredientIndex}
+                    ingredient={ingredient}
+                  />
                 ))}
               </div>
               {step.equipment.length > 0 && (
@@ -73,10 +81,10 @@ const RecipePage = (props, {priceData}) => {
         </div>
       ))}
 
-      <button> Want to order?</button>
+      <button> Want to order? </button> 
+      <span>${priceData} per serving</span>
     </div>
-);
+  );
 };
-
 
 export default RecipePage;
