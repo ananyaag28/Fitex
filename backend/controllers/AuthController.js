@@ -10,6 +10,7 @@ const generateJwtToken = (userObj) => {
 };
 
 const logout = (req, res) => {
+  console.log("Logged out")
   res
     .cookie("access_token", "", {
       httpOnly: true,

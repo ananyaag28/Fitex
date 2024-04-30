@@ -11,6 +11,7 @@ import Home from './pages/Home/Home';
 import Meals from './pages/Meals/Meals';
 import Signup from './components/Auth/Signup';
 import Login from './components/Auth/Login';
+import Cook from './pages/Cook/Cook';
 
 function App() {
 
@@ -45,13 +46,7 @@ function App() {
 
           <Route path='/signup' element={<Signup/>}></Route>
           <Route path='/login' element={<Login/>}></Route>
-          {/* <Route path='/Fitex' element={<Fitex/>}></Route> */}
-          
-          {/* <Route path='/dob' element={<Dob userData={userData} updateUserData={updateUserData} />}></Route>
-          <Route path='/gender' element={<Gender userData={userData} updateUserData={updateUserData} />}></Route>
-          <Route path='/height' element={<Height userData={userData} updateUserData={updateUserData} />}></Route>
-          <Route path='/weight' element={<Weight userData={userData} updateUserData={updateUserData} />}></Route> */}
-          <Route path='/infopage' element={<InfoPage userData={userData} updateUserData={updateUserData}/>}></Route>
+          <Route path='/profile' element={<InfoPage userData={userData} updateUserData={updateUserData}/>}></Route>
           <Route path='/waterpage' element={<Water userData={userData} updateUserData={updateUserData} />}></Route>
           <Route path='/watercard' element={<WaterCard userData={userData} updateUserData={updateUserData} />}></Route>
           <Route path='/snappage' element={<Snap userData={userData} updateUserData={updateUserData} />}></Route>
@@ -59,6 +54,7 @@ function App() {
           <Route path='/bmipage' element={<BMI userData={userData} updateUserData={updateUserData}/>}></Route>
           <Route path='/bmicard' element={<BMICard userData={userData} updateUserData={updateUserData}/>}></Route>
           <Route path='/fitex' element={<Home userData={userData} updateUserData={updateUserData}/>}></Route>
+          <Route path='/cook' element={<Cook userData={userData} updateUserData={updateUserData}/>}></Route>
           <Route path='/meals' element={<Meals userData={userData} updateUserData={updateUserData}/>}></Route>
         
         </Routes>
