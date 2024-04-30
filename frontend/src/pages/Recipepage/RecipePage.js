@@ -5,9 +5,9 @@ import { useParams } from "react-router-dom";
 
 const IngredientCard = ({ ingredient }) => {
   return (
-    <div className="ingredient-card">
-      <img src={ingredient.image} alt={ingredient.name} />
-      <p>{ingredient.name}</p>
+    <div className="ingredient-card bg-white rounded-lg shadow-md overflow-hidden max-w-sm mx-2 p-4 mb-4 flex flex-col items-center justify-center space-y-4">
+      <img src={ingredient.image} alt={ingredient.name} className="w-32 h-32 object-cover"/>
+      <p className="text-lg font-semibold text-center">{ingredient.name}</p>
     </div>
   );
 };
@@ -48,41 +48,46 @@ const RecipePage = (props) => {
   }, [recipeId]);
 
   return (
-    <div className=" bg-orange-200 p-32 flex flex-col">
-      <h1 className=" font-bold">Recipe Page</h1>
+    <div className="bg-[#abddc4] p-8 flex flex-col items-center">
+    <div className=" bg-[#f5f5dc] p-8 flex flex-col text-grey-900 rounded-3xl m-5">
+      <div className="bg-[#abddc4] rounded-lg p-4 mb-4">
+        <h1 className="text-4xl font-bold">Recipe Page</h1>
+      </div> <br />
       {recipeData.map((recipe, index) => (
-        <div key={index}>
-          <h2>{recipe.name}</h2>
+        <div key={index} className="mb-8">
+          <h2 className="text-2xl font-bold mb-2">{recipe.name}</h2>
           {recipe.steps.map((step, stepIndex) => (
-            <div key={stepIndex}>
-              <h3>Step {step.number}</h3>
-              <p>{step.step}</p>
-              <h4>Ingredients:</h4>
-              <div className="ingredient-cards">
+            <div key={stepIndex} className="mb-4">
+              <h3 className="text-xl font-semibold mb-1">Step {step.number}</h3><br />
+              <p className="mb-2">{step.step}</p><br />
+              <h4 className="text-lg font-semibold mb-1">Ingredients:</h4><br />
+              <div className="ingredient-cards flex flex-wrap">
                 {step.ingredients.map((ingredient, ingredientIndex) => (
                   <IngredientCard
                     key={ingredientIndex}
                     ingredient={ingredient}
                   />
                 ))}
-              </div>
+              </div><br />
               {step.equipment.length > 0 && (
                 <>
-                  <h4>Equipment:</h4>
-                  <ul>
+                  <h4 className="text-lg font-semibold mb-1">Equipment:</h4><br />
+                  <ul className="list-disc pl-5">
                     {step.equipment.map((equip, equipIndex) => (
                       <IngredientCard key={equipIndex} ingredient={equip} />
                     ))}
-                  </ul>
+                  </ul><br />
                 </>
               )}
             </div>
           ))}
         </div>
       ))}
-
-      <button> Want to order? </button> 
-      <span>${priceData} per serving</span>
+      <div className="flex justify-evenly items-center mx-6">
+      <span className="text-lg font-semibold mt-2 bg-[#abddc4] px-4 py-4 rounded-lg">Total cost: ${priceData} per serving</span>
+      <button className="bg-[rgb(8,164,132)] hover:bg-green-700 text-white font-bold py-5 px-4 rounded-lg text-xl"> Want to order? </button> 
+      </div>
+    </div>
     </div>
   );
 };

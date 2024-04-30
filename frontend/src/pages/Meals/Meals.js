@@ -70,7 +70,7 @@ function Meals({setPriceData}) {
         };
         // const BulkrecipeInfo = await axios.request(BulkRecipeInfoRequest);
         // console.log(BulkrecipeInfo.data);
-        // const BulkrecipeInfodata = BulkrecipeInfo.data;
+        // const BulkrecipeInfodata = BulkrecipeInfo.data; 
 
         const updatedGroupedItems = [];
         mealPlanData.items.forEach((item) => {
