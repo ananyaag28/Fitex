@@ -12,6 +12,8 @@ import Meals from './pages/Meals/Meals';
 import Signup from './components/Auth/Signup';
 import Login from './components/Auth/Login';
 import Cook from './pages/Cook/Cook';
+import RecipePage from './pages/Recipepage/RecipePage';
+import MainForm from './pages/mainForm/MainForm';
 
 function App() {
 
@@ -56,6 +58,9 @@ function App() {
           <Route path='/fitex' element={<Home userData={userData} updateUserData={updateUserData}/>}></Route>
           <Route path='/cook' element={<Cook userData={userData} updateUserData={updateUserData}/>}></Route>
           <Route path='/meals' element={<Meals userData={userData} updateUserData={updateUserData}/>}></Route>
+            {/* Define the route for the recipe page with a dynamic parameter */}
+          <Route path='/meals/:id/:price' element={<RecipePage />} />
+          <Route path='/mainform' element={<MainForm userData={userData} updateUserData={updateUserData}/>}></Route>
         
         </Routes>
       </Router>
