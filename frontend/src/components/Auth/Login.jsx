@@ -27,10 +27,6 @@ export default function Login({ existingRole, existingEmail}) {
     message: ""
   })
 
-  useEffect(() => {
-    console.log(userData)
-  }, [userData])
-
   const slides = [
     {
       image: "",

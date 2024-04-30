@@ -59,3 +59,11 @@ code {
 .datePicker .MuiTextField-root {
   width: 100% !important;
 }
+
+.progressBar {
+  width: 100%;
+}
+.bar {
+  height: 6px;
+  border-radius: 10px;
+}

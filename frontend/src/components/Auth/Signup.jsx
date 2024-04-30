@@ -27,10 +27,6 @@ export default function Signup() {
     message: ""
   })
 
-  useEffect(() => {
-    console.log(userData)
-  }, [userData])
-
   const slides = [
     {
       image: "",

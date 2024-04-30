@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './bmiCard.css';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function BMICard(props) {
   const { userData, updateUserData } = props;
@@ -10,9 +10,6 @@ function BMICard(props) {
   const bmiBarStyle = { width: `${currentBmi}%` };
   const pointerLeftPosition = calculatePointerPosition(currentBmiStage);
 
-  const navigate = useNavigate();
-
-  const handleBmipageCardClick = () => {};
 
   function calculatePointerPosition(stage) {
     switch (stage) {
@@ -34,30 +31,33 @@ function BMICard(props) {
   }
 
   return (
-    <div className='BMICard' onClick={handleBmipageCardClick}>
-      <div className='BMICardTop'>
-        <h2 className='BMICardTopH2'>
-          <img className='BMICardTopLeftImg' alt='' />
-          BMI
-        </h2>
-      </div>
+    <Link to={"/waterpage"} className='bg-white rounded-lg w-[80%] mx-auto p-4 flex flex-col gap-3'>
 
-      <div className='BMICardMiddle'>
-        <div className='BMI-bar' style={bmiBarStyle}></div>
-        <div className='BMI-pointer' style={pointerLeftPosition}></div>
-      </div>
 
-      <div className='BMICardLast'>
-        <div className='BMICardLastCurrent'>
-          <h3 className='BMICardLastH3CurrentText'>Current:</h3>
-          <h4 className='BMICardLastH4Current'>{currentBmi} </h4>
-        </div>
-        <div className='BMICardLastGoal'>
-          <h3 className='BMICardLastH3GoalText'>BMI Level:</h3>
-          <h4 className='BMICardLastH4Goal'>{currentBmiStage} </h4>
-        </div>
+    <div className='flex justify-between'>
+      <div className='flex items-end gap-2  text-2xl'>
+        <img className="w-14 border border-gray-700 rounded-full p-2" src={process.env.PUBLIC_URL + "/Icons/bmi-icon.png"} />
+        <p> BMI</p>
       </div>
     </div>
+
+
+    {/* <div className='bg-[#d3d3d3] h-1.5 w-[80%] rounded mx-auto mt-3'>
+      <motion.div
+        className={`bar bg-gradient-to-r from-green-300 to-blue-400`}
+        initial={{ width: 0 }}
+        animate={{ width: `${waterPercentage}%` }}
+        transition={{ duration: 1 + (currentWater / waterGoal) }}>
+      </motion.div>
+    </div> */}
+
+    <div className='flex justify-between gap-2 mx-[10%]'>
+      <p>Current: {currentBmi} </p>
+      <p>BMI Level: {currentBmiStage}</p>
+    </div>
+
+</Link>
+    
   );
 }
 

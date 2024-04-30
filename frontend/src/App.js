@@ -1,11 +1,5 @@
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
 import React,{useState} from 'react';
-import './App.css';
-import Fitex from './Fitex';
-import Dob from './components/DOB/Dob';
-import Gender from './components/Gender/Gender';
-import Height from './components/Height/Height';
-import Weight from './components/Weight/Weight';
 import InfoPage from './pages/InfoPage/InfoPage';
 import Water from './components/Water/Water';
 import WaterCard from './Cards/WaterCard/WaterCard';
@@ -27,7 +21,7 @@ function App() {
     heightInches: 4,
     currentWeight: 54,
     weightGoal: 65,
-    currentWater:0,
+    currentWater:1000,
     waterGoal:3000,
     currentwaterStreak:10,
     currentSanpStreak:25,
@@ -40,6 +34,7 @@ function App() {
   const updateUserData = (data) => {
     setUserData({ ...userData, ...data });
   };
+
 
 
 

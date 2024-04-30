@@ -81,7 +81,6 @@ const FormSignUp = ({ setIsSnackbarOpen, userData, setUserData, view, setView })
     },
   }));
 
-  useEffect(()=>{console.log(consumerPage)},[consumerPage])
 
   const ColorIconButton = styled(IconButton)(({ theme }) => ({
     color: theme.palette.getContrastText("#2b5146"),

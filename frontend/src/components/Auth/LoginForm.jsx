@@ -106,7 +106,6 @@ const LoginForm = ({ setIsSnackbarOpen, existingEmail, userData, setUserData, vi
 
   }
 
-  useEffect(() => { console.log(view) }, [view])
 
   return (
     <div className="sm:w-96">
