@@ -1,0 +1,123 @@
+[
+    {
+      "name": "",
+      "steps": [
+        {
+          "number": 1,
+          "step": "Combine the almond, coconut, tapioca/arrowroot flour, baking powder, sugar and salt together and mix all the ingredients well before adding the milk and paste/extract and ensuring that all of the ingredients are whisked together to form a smooth batter.Allow to sit for approximately 10-15 minutes.",
+          "ingredients": [
+            {
+              "id": 20003,
+              "name": "arrowroot",
+              "localizedName": "arrowroot",
+              "image": "https://spoonacular.com/cdn/ingredients_100x100/white-powder.jpg"
+            },
+            {
+              "id": 18369,
+              "name": "baking powder",
+              "localizedName": "baking powder",
+              "image": "https://spoonacular.com/cdn/ingredients_100x100/white-powder.jpg"
+            },
+            {
+              "id": 12104,
+              "name": "coconut",
+              "localizedName": "coconut",
+              "image": "https://spoonacular.com/cdn/ingredients_100x100/coconut.jpg"
+            },
+            {
+              "id": 0,
+              "name": "extract",
+              "localizedName": "extract",
+              "image": ""
+            },
+            {
+              "id": 20068,
+              "name": "tapioca",
+              "localizedName": "tapioca",
+              "image": "https://spoonacular.com/cdn/ingredients_100x100/sago-pearls.png"
+            },
+            {
+              "id": 12061,
+              "name": "almonds",
+              "localizedName": "almonds",
+              "image": "https://spoonacular.com/cdn/ingredients_100x100/almonds.jpg"
+            },
+            {
+              "id": 19335,
+              "name": "sugar",
+              "localizedName": "sugar",
+              "image": "https://spoonacular.com/cdn/ingredients_100x100/sugar-in-bowl.png"
+            },
+            {
+              "id": 1077,
+              "name": "milk",
+              "localizedName": "milk",
+              "image": "https://spoonacular.com/cdn/ingredients_100x100/milk.png"
+            },
+            {
+              "id": 2047,
+              "name": "salt",
+              "localizedName": "salt",
+              "image": "https://spoonacular.com/cdn/ingredients_100x100/salt.jpg"
+            }
+          ],
+          "equipment": [],
+          "length": {
+            "number": 15,
+            "unit": "minutes"
+          }
+        },
+        {
+          "number": 2,
+          "step": "Heat a small amount of coconut oil into a frying pan/skillet and pour a small enough amount of the batter into the middle of the pan.Allow the batter to cook sufficiently for a few minutes (the edges should start to brown and the top of the batter should start to bubble) on one side before sprinkling on a few blueberries and flipping the pancake over to cook on the other side.Immediately sprinkle on some of the cacao nibs and dark chocolate on top and continue to cook thoroughly for a few minutes before removing the pancake and setting aside.Repeat with the remaining batter until finished.",
+          "ingredients": [
+            {
+              "id": 19904,
+              "name": "dark chocolate",
+              "localizedName": "dark chocolate",
+              "image": "https://spoonacular.com/cdn/ingredients_100x100/dark-chocolate-pieces.jpg"
+            },
+            {
+              "id": 9050,
+              "name": "blueberries",
+              "localizedName": "blueberries",
+              "image": "https://spoonacular.com/cdn/ingredients_100x100/blueberries.jpg"
+            },
+            {
+              "id": 4047,
+              "name": "coconut oil",
+              "localizedName": "coconut oil",
+              "image": "https://spoonacular.com/cdn/ingredients_100x100/oil-coconut.jpg"
+            },
+            {
+              "id": 98846,
+              "name": "cocoa nibs",
+              "localizedName": "cocoa nibs",
+              "image": "https://spoonacular.com/cdn/ingredients_100x100/cacao-nibs.png"
+            }
+          ],
+          "equipment": [
+            {
+              "id": 404645,
+              "name": "frying pan",
+              "localizedName": "frying pan",
+              "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png"
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "step": "Pour over the agave, give thanks and enjoy!",
+          "ingredients": [
+            {
+              "id": 19912,
+              "name": "agave",
+              "localizedName": "agave",
+              "image": "https://spoonacular.com/cdn/ingredients_100x100/agave.png"
+            }
+          ],
+          "equipment": []
+        }
+      ]
+    }
+  ]
