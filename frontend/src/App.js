@@ -14,6 +14,7 @@ import Login from './components/Auth/Login';
 import Cook from './pages/Cook/Cook';
 import RecipePage from './pages/Recipepage/RecipePage';
 import MainForm from './pages/mainForm/MainForm';
+import Landing from './pages/landing/Landing';
 
 function App() {
 
@@ -61,6 +62,7 @@ function App() {
             {/* Define the route for the recipe page with a dynamic parameter */}
           <Route path='/meals/:id/:price' element={<RecipePage />} />
           <Route path='/mainform' element={<MainForm userData={userData} updateUserData={updateUserData}/>}></Route>
+          <Route path='/landing' element={<Landing userData={userData} updateUserData={updateUserData}/>}></Route>
         
         </Routes>
       </Router>
