@@ -59,6 +59,7 @@ const Cook = () => {
   const handleRecipeClick = (recipeId, orderId) => {
     // Redirect to dynamic route
     history(`/cookRec/${recipeId}/${orderId}`);
+    history(`/cookRec/${recipeId}/${orderId}`);
   };
 
   return (
@@ -140,7 +141,7 @@ const Cook = () => {
                   key={recipe.id}
                   class="relative group bg-[#abddc4] py-10 sm:py-20 px-4 flex flex-col space-y-2 items-center cursor-pointer rounded-md hover:bg-green-700/50 hover:smooth-hover"
                   onClick={() => handleRecipeClick(recipe.id, orders[id].id)} // Attach click event to each recipe card
-                  // href={`cookRec/${recipe.id}`} // Set the dynamic route as href
+                  // href={cookRec/${recipe.id}} // Set the dynamic route as href
                 >
                   <img
                     class="w-20 h-20 object-cover object-center"
