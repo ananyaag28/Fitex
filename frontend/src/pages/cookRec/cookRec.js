@@ -29,7 +29,10 @@ const CookRec = (props) => {
   const orderId = params.orderId;
   console.log(orderId);
 
+  const [orderAccepted, setOrderAccepted] = useState(false);
+
   const handleOrder = async () => {
+    setOrderAccepted(true);
     try {
       const res = await axios.put(`${BACKEND_URL}/cook/orderAccepted`, {
         recipeId: parseInt(recipeId, 10),
@@ -124,14 +127,22 @@ const CookRec = (props) => {
             ))}
           </div>
         ))}
-        <div className="flex flex-row items-center">
-  <button className="bg-blue-500 hover:bg-blue-700 m-5 text-white font-bold py-2 px-4 rounded" onClick={handleOrder}>
-    Accept
-  </button>
-  <button className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-    Deny
-  </button>
-</div>
+          <div className="flex flex-row items-center">
+      {orderAccepted ? (
+        <button className="bg-blue-500 m-5 text-white font-bold py-2 px-4 rounded">
+          Order Accepted
+        </button>
+      ) : (
+        <button className="bg-blue-500 hover:bg-blue-700 m-5 text-white font-bold py-2 px-4 rounded" onClick={handleOrder}>
+          Accept
+        </button>
+      )}
+      {!orderAccepted && (
+        <button className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Deny
+        </button>
+      )}
+    </div>
       </div>
     </div>
   );
