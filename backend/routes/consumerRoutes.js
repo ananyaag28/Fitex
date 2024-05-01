@@ -48,7 +48,7 @@ router.get("/getOrder", async (req, res) => {
     return {
       ...res,
       recipeId : res.recipeId.toString(),
-      cookId : res.cookId.toString()
+      cookId : res.cookId?.toString()
     }
   })
   console.log(response)

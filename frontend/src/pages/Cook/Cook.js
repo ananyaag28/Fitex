@@ -59,6 +59,7 @@ const Cook = () => {
   const handleRecipeClick = (recipeId, orderId) => {
     // Redirect to dynamic route
     history(`/cookRec/${recipeId}/${orderId}`);
+    history(`/cookRec/${recipeId}/${orderId}`);
   };
 
   return (
