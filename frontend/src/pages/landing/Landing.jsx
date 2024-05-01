@@ -64,8 +64,8 @@ export default function Landing() {
             </a>
           </div>
           {/* fffef2 */}
-          <a href="/landing#review" className="text-[#fffef2] hover:text-[#cbedb3]">Other services</a>
           <a href="/landing#services" className="text-[#fffef2] hover:text-[#cbedb3]">Meal Plan</a>
+          <a href="/landing#review" className="text-[#fffef2] hover:text-[#cbedb3]">Other services</a>
           <a className="text-xl font-extrabold text-[#cbedb3]">BMI: {bmiString} ~ <span className="text">{bmiStage}</span></a>
         </nav>
         <div id="menu-btn" className="fas fa-bars" />
@@ -92,7 +92,7 @@ export default function Landing() {
             />
           </div>
           <div className="content">
-            <h3>we take care of your healthy life</h3>
+            <h3>Your partner in Health & Fitness</h3>
             <p>
               Fitex, is an all-in-one health and fitness companion designed to
               revolutionize how you track, manage, and optimize your health and
@@ -116,9 +116,9 @@ export default function Landing() {
         </div>
       </section>
 
-      <section className="services " id="services">
+      <section className="services !h-screen !pt-80 " id="services">
         <h1 className="heading">
-          Generate <span>Meal Plan</span>
+          Get Your <span>Meal Plan</span>
         </h1>
         <div className="box-container">
           <div className="box">
@@ -166,10 +166,10 @@ export default function Landing() {
         </div>
       </section>
 
-      <section className="review pb-32" id="review">
+      <section className="review pb-32 !h-screen !pt-64" id="review">
         <h1 className="heading">
           {" "}
-          Other <span>services</span>{" "}
+          Our <span>services</span>{" "}
         </h1>
         <div className="box-container">
           <a href="/waterpage">

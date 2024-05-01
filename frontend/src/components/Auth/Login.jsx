@@ -55,7 +55,7 @@ export default function Login({ existingRole, existingEmail}) {
 
       <div className="absolute top-5 left-5 flex gap-1 items-center text-3xl font-mono">
         <img src={process.env.PUBLIC_URL + "/Assets/fitex.png"} className="w-32" />
-        <p className="text-[#FFF] text-5xl">Fitex</p>
+        <p className="text-[#FFF] text-5xl tracking-wider font-bold">FITEX</p>
       </div>
       <section className="absolute hidden xl:block left-20 top-1/4 !bg-transparent">
 
@@ -75,9 +75,9 @@ export default function Login({ existingRole, existingEmail}) {
           {slides.map((slide, id) => {
             return (
               <SwiperSlide key={id} className="flex flex-col">
-                <img alt="altText" src={slide.image} className="w-[300px]" />
+                <img alt="altText" src={slide.image} className="w-[350px] mb-10 rounded-2xl" />
                 <h1 className="text-[#CBEDB3] text-6xl mt-4">{slide.title}</h1>
-                <div className="text-[#FFFEF2] text-3xl font-light mt-2">{slide.desc}</div>
+                <div className="text-[#FFFEF2] text-3xl font-light mt-2 leading-[25px]">{slide.desc}</div>
               </SwiperSlide>
             )
           })}
