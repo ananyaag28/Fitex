@@ -3,6 +3,8 @@ import "./meals.css";
 import { useNavigate } from "react-router-dom";
 import RecipeCard from "../../Cards/RecipeCard/RecipeCard";
 import axios from "axios";
+
+import { BACKEND_URL } from "../../values";
 // import mealPlanData from "./outputMeal.json";
 // import BulkrecipeInfodata from "./recipeInfo.json";
 
@@ -11,6 +13,22 @@ import { useParams } from "react-router-dom";
 function Meals(props) {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
+
+  const consumer = localStorage.getItem("consumerId");
+  useEffect(() => {
+    const fetchBmi = async () => {
+      try {
+        const res = await axios.post(`${BACKEND_URL}/consumer`, {consumerId : consumer});
+        const BMI = res.data.currentBmi;
+        console.log("BMI: ", BMI)
+        console.log(res.data)
+      } catch (error) {
+        console.log("Error Logging In Consumer");
+      }
+    };
+
+    fetchBmi();
+  }, []); // Add chosenTask as dependency to recalculate when it changes
 
   let params = useParams();
   console.log(props);
@@ -38,7 +56,8 @@ function Meals(props) {
         params: {
           timeFrame: "week",
           targetCalories: Calories,
-          diet: "vegan",
+          // diet: diet,
+          // exclude: exclusion,
         },
         headers: {
           "X-RapidAPI-Key":
