@@ -130,16 +130,16 @@ function Meals(props) {
   }, []);
   console.log(groupedItems);
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%] text-3xl">This may take some time...</div>;
   }
 
   return (
     <div className="Meals">
-      <div className="mealsPage-header bg-[#f5f5dc] rounded-lg p-4 shadow-lg flex flex-col items-start justify-between">
+      <div className=" bg-[#f5f5dc] rounded-lg p-4 shadow-lg flex flex-col items-center justify-between">
         <h1 className="text-3xl font-bold text-[rgb(8,164,132)] mb-4">
           My Diet Plan
         </h1>
-        <div className="infopageCard" onClick={handleInfopageCardClick}></div>
+        {/* <div className="infopageCard" onClick={handleInfopageCardClick}></div> */}
         <h3 className="TargetCalories text-lg font-semibold text-[rgb(8,164,132)]">
           Targeted Calories per day - {Calories}
         </h3>
