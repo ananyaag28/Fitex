@@ -24,7 +24,7 @@ export default function Landing() {
         const res = await axios.get(`${BACKEND_URL}/consumer`);
         const BMI = res.data[consumer - 1].currentBmi;
         setBMI(BMI);
-        setBmiStage(res.data[consumer-1].currentBmiStage)
+        setBmiStage(res.data[consumer - 1].currentBmiStage);
         console.log(BMI);
         console.log(res.data[consumer - 1]);
         const gender = res.data[consumer - 1].gender;
@@ -53,16 +53,30 @@ export default function Landing() {
   return (
     <>
       {/* header section starts  */}
-      <header className="header" style={{ backgroundColor: '#216c53' }} >
+      <header className="header" style={{ backgroundColor: "#216c53" }}>
         <img src={Fitex} height={125} width={125} alt="Logo" />
         <nav className="navbar">
           <div className="dropdown">
-            <a href="/landing" className="text-[#fffef2] hover:text-[#cbedb3]">home</a>
+            <a href="/landing" className="text-[#fffef2] hover:text-[#cbedb3]">
+              home
+            </a>
           </div>
           {/* fffef2 */}
-          <a href="/landing#services" className="text-[#fffef2] hover:text-[#cbedb3]">Other services</a>
-          <a href="/landing#review" className="text-[#fffef2] hover:text-[#cbedb3]">Meal Plan</a>
-          <a className="text-xl font-extrabold text-[#cbedb3]">BMI: {bmiString} ~ <span className="text">{bmiStage}</span></a>
+          <a
+            href="/landing#services"
+            className="text-[#fffef2] hover:text-[#cbedb3]"
+          >
+            Other services
+          </a>
+          <a
+            href="/landing#review"
+            className="text-[#fffef2] hover:text-[#cbedb3]"
+          >
+            Meal Plan
+          </a>
+          <a className="text-xl font-extrabold text-[#cbedb3]">
+            BMI: {bmiString} ~ <span className="text">{bmiStage}</span>
+          </a>
         </nav>
         <div id="menu-btn" className="fas fa-bars" />
       </header>
@@ -74,18 +88,15 @@ export default function Landing() {
         </div> */}
       </section>
       <section className="about" id="about">
-        <h1 className="heading">
-          {" "}
-          {/* <span>about</span> us{" "} */}
-        </h1>
+        <h1 className="heading"> {/* <span>about</span> us{" "} */}</h1>
         <div className="row">
           <div className="image">
-          <img
-      src="https://img.freepik.com/free-photo/flay-lay-scale-weights_23-2148262188.jpg?size=626&ext=jpg&ga=GA1.1.553209589.1714435200&semt=sph"
-      alt="Flay lay scale weights"
-      className="m-5"
-      style={{ height: '300px', width: '500px' }} // Adjust as needed
-    />
+            <img
+              src="https://img.freepik.com/free-photo/flay-lay-scale-weights_23-2148262188.jpg?size=626&ext=jpg&ga=GA1.1.553209589.1714435200&semt=sph"
+              alt="Flay lay scale weights"
+              className="m-5"
+              style={{ height: "300px", width: "500px" }} // Adjust as needed
+            />
           </div>
           <div className="content">
             <h3>we take care of your healthy life</h3>
@@ -104,7 +115,7 @@ export default function Landing() {
               individuals seeking a convenient, cost-effective, and effective
               way to manage their health and wellness journey. We believe that
               our app will empower users to make healthier choices and lead
-              happier, more fulfilling lives. 
+              happier, more fulfilling lives.
             </p>
 
             {/* <a href="#" class="btn"> learn more <span class="fas fa-chevron-right"></span> </a> */}
