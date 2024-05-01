@@ -28,7 +28,7 @@ const LoginRole = ({existingSellerStatus, existingRole, userData, setUserData, v
 
   return (
     view == "ROLE" &&
-    <>
+    <div className="scale-150 mt-44">
         <div>
             <h1 className="text-3xl">Welcome Back!!</h1>
             <h3 className="text-left text-gray-600 mt-4">Hop into website as:</h3>
@@ -72,7 +72,7 @@ const LoginRole = ({existingSellerStatus, existingRole, userData, setUserData, v
       <div className="text-left mt-2">
         <p>Don't have an existing account? Click Here to <Link className="text-blue-500 hover:underline" to={"/signup"}>SignUp</Link></p>
       </div>
-    </>
+    </div>
   );
 };
 

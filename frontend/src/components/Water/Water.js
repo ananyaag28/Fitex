@@ -66,7 +66,7 @@ function Water(props) {
       <h2 className='WaterPageWaterGoalh2'>Goal : {waterGoal} ml</h2>
     </div>
       {!showWaterButtons && (
-      <div className='waterPageAddWater'><button className='waterPageAddWaterButton' onClick={handleAddWaterClicked}>+ Add Water</button></div>
+      <div className='waterPageAddWater'><button className='waterPageAddWaterButton !w-full' onClick={handleAddWaterClicked}>+ Add Water</button></div>
       )}
       {showWaterButtons && (
       <div className='waterPageWaterButton'>

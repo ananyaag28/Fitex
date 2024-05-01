@@ -18,6 +18,8 @@ model Consumer {
   weight          String
   currentBmi      String
   currentBmiStage String
+  diet            String
+  allergies       String
   orders          Order[]
 }
 

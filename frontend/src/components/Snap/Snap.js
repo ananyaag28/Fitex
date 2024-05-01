@@ -120,7 +120,9 @@ const Snap = () => {
         </ul>
       </div>
       <div>
-        <p >{response}</p>
+        <div className='calory_count'>
+        <h2>{response}</h2>
+        </div>
         {imageSrc && (
           <div className="snapPageImageContainer">
 
@@ -154,5 +156,3 @@ const Snap = () => {
 };
 
 export default Snap;
-
-

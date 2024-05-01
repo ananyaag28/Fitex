@@ -111,7 +111,7 @@ const LoginForm = ({ setIsSnackbarOpen, existingEmail, userData, setUserData, vi
 
 
   return (
-    <div className="sm:w-96">
+    <div className="sm:w-96 scale-150 mt-44">
       {view == "CONSUMER" && (
         <motion.div
           ref={investorFormRef}
