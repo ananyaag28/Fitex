@@ -18,11 +18,11 @@ const SelectRole = ({userData, setUserData, view, setView}) => {
 
   return (
     view == "ROLE" &&
-    <>
-        <div>
-            <h1 className="text-3xl">Welcome to <span className="text-green-600">Fitex!</span></h1>
-            <h3 className="text-left text-gray-600 mt-4">How would you like to Join Us:</h3>
-        </div>
+    <div className="scale-150 mt-44">
+      <div>
+          <h1 className="text-3xl">Welcome to <span className="text-green-600">Fitex!</span></h1>
+          <h3 className="text-left text-gray-600 mt-4">How would you like to Join Us:</h3>
+      </div>
 
       <div className="flex flex-col gap-4 mt-1">
         <form className="flex flex-col gap-4">
@@ -62,7 +62,7 @@ const SelectRole = ({userData, setUserData, view, setView}) => {
       <div className="text-left mt-2">
         <p>Have an account already? Click Here to <Link className="text-blue-500 hover:underline" to={"/login"}>login</Link></p>
       </div>
-    </>
+    </div>
   );
 };
 

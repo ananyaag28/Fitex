@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
 
 :root {
-    --green: #16a085;
+    --green: #216c53;
     --black: #444;
     --light-color: #777;
     --box-shadow: .5rem .5rem 0 rgba(23, 136, 113, 0.2);
@@ -23,9 +23,6 @@
 
 html {
     font-size: 62.5%;
-    overflow-x: hidden;
-    scroll-padding-top: 7rem;
-    scroll-behavior: smooth;
 }
 
 section {
@@ -87,7 +84,7 @@ section:nth-child(even) {
 }
 
 .header {
-    padding: 1rem 9%;
+    padding: 1rem 2%;
     position: fixed;
     top: 0;
     left: 0;
@@ -507,7 +504,7 @@ section:nth-child(even) {
     background: var(--green);
     border-bottom-left-radius: 50%;
     border-bottom-right-radius: 50%;
-    height: 25rem;
+    height: 15rem;
     width: 120%;
     z-index: -1;
 }

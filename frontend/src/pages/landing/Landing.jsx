@@ -10,26 +10,26 @@ import { useNavigate } from "react-router-dom";
 export default function Landing() {
   const navigate = useNavigate();
   const consumer = localStorage.getItem("consumerId");
-  console.log(consumer);
   const [goal, setGoal] = useState(null);
 
   const [BMI, setBMI] = useState(null); // State to
-  const bmiString = BMI.toString(); // Convert BigInt to string
+  const bmiString = BMI?.toString(); // Convert BigInt to string
 
   const [bmiStage, setBmiStage] = useState(null);
   const [calories, setCalories] = useState(null);
   useEffect(() => {
     const fetchBmi = async () => {
       try {
-        const res = await axios.get(`${BACKEND_URL}/consumer`);
-        const BMI = res.data[consumer - 1].currentBmi;
+        const res = await axios.post(`${BACKEND_URL}/consumer`, {consumerId : consumer});
+        const BMI = res.data.currentBmi;
+        console.log("BMI: ", BMI)
         setBMI(BMI);
-        setBmiStage(res.data[consumer-1].currentBmiStage)
+        setBmiStage(res.data.currentBmiStage)
         console.log(BMI);
-        console.log(res.data[consumer - 1]);
-        const gender = res.data[consumer - 1].gender;
+        console.log(res.data);
+        const gender = res.data.gender;
         console.log(gender);
-        const height = res.data[consumer - 1].height;
+        const height = res.data.height;
         console.log(height);
       } catch (error) {
         console.log("Error Logging In Consumer");
@@ -51,41 +51,43 @@ export default function Landing() {
   }, [consumer, goal, calories, navigate]);
 
   return (
-    <>
-      {/* header section starts  */}
+    <div className="landingPage">
       <header className="header" style={{ backgroundColor: '#216c53' }} >
-        <img src={Fitex} height={125} width={125} alt="Logo" />
+        <div className="flex gap-2 items-center !text-white text-5xl">
+          <img src={Fitex} height={125} width={125} alt="Logo" />
+          <p>Fitex</p>
+        </div>
         <nav className="navbar">
           <div className="dropdown">
             <a href="/landing" className="text-[#fffef2] hover:text-[#cbedb3]">home</a>
           </div>
           {/* fffef2 */}
-          <a href="/landing#services" className="text-[#fffef2] hover:text-[#cbedb3]">Other services</a>
-          <a href="/landing#review" className="text-[#fffef2] hover:text-[#cbedb3]">Meal Plan</a>
+          <a href="/landing#review" className="text-[#fffef2] hover:text-[#cbedb3]">Other services</a>
+          <a href="/landing#services" className="text-[#fffef2] hover:text-[#cbedb3]">Meal Plan</a>
           <a className="text-xl font-extrabold text-[#cbedb3]">BMI: {bmiString} ~ <span className="text">{bmiStage}</span></a>
         </nav>
         <div id="menu-btn" className="fas fa-bars" />
       </header>
-      {/* header section ends */}
-      {/* home section starts  */}
+
       <section className="mt-11 pt-10" id="home">
         {/* <div className="content">
           <h3>stay safe, stay healthy</h3>
         </div> */}
       </section>
-      <section className="about" id="about">
-        <h1 className="heading">
+
+      <section className="about h-screen bg-[#FFFEF2]" id="about">
+        <h1 className="heading my-20">
           {" "}
           {/* <span>about</span> us{" "} */}
         </h1>
         <div className="row">
           <div className="image">
-          <img
-      src="https://img.freepik.com/free-photo/flay-lay-scale-weights_23-2148262188.jpg?size=626&ext=jpg&ga=GA1.1.553209589.1714435200&semt=sph"
-      alt="Flay lay scale weights"
-      className="m-5"
-      style={{ height: '300px', width: '500px' }} // Adjust as needed
-    />
+            <img
+              src="https://img.freepik.com/free-photo/flay-lay-scale-weights_23-2148262188.jpg?size=626&ext=jpg&ga=GA1.1.553209589.1714435200&semt=sph"
+              alt="Flay lay scale weights"
+              className="m-5"
+              style={{ height: '300px', width: '500px' }} 
+            />
           </div>
           <div className="content">
             <h3>we take care of your healthy life</h3>
@@ -104,16 +106,15 @@ export default function Landing() {
               individuals seeking a convenient, cost-effective, and effective
               way to manage their health and wellness journey. We believe that
               our app will empower users to make healthier choices and lead
-              happier, more fulfilling lives. 
+              happier, more fulfilling lives.
             </p>
 
             {/* <a href="#" class="btn"> learn more <span class="fas fa-chevron-right"></span> </a> */}
           </div>
         </div>
       </section>
-      {/* about section ends */}
-      {/* services section starts  */}
-      <section className="services" id="services">
+
+      <section className="services " id="services">
         <h1 className="heading">
           Generate <span>Meal Plan</span>
         </h1>
@@ -127,7 +128,7 @@ export default function Landing() {
             </p>
             <a
               className="btn"
-              href="/meals/1500"
+              href={`/meals/${Math.floor(Math.random() * (2000 - 1500 + 1)) + 1500}`}
               onClick={() => handleGeneratePlanClick("lose")}
             >
               Generate Plan <span className="fas fa-chevron-right" />
@@ -139,7 +140,7 @@ export default function Landing() {
             <p>Find the medicines shop nearby.</p>
             <a
               className="btn"
-              href="/meals/2000"
+              href={`/meals/${Math.floor(Math.random() * (2500 - 2000 + 1)) + 2000}`}
               onClick={() => handleGeneratePlanClick("maintain")}
             >
               Generate Plan <span className="fas fa-chevron-right" />
@@ -154,7 +155,7 @@ export default function Landing() {
             </p>
             <a
               className="btn"
-              href="/meals/2500"
+              href={`/meals/${Math.floor(Math.random() * (3000 - 2500 + 1)) + 2500}`}
               onClick={() => handleGeneratePlanClick("gain")}
             >
               Generate Plan <span className="fas fa-chevron-right" />
@@ -163,7 +164,7 @@ export default function Landing() {
         </div>
       </section>
 
-      <section className="review" id="review">
+      <section className="review pb-32" id="review">
         <h1 className="heading">
           {" "}
           Other <span>services</span>{" "}
@@ -171,16 +172,11 @@ export default function Landing() {
         <div className="box-container">
           <a href="/waterpage">
             <div className="box">
-              <img src="/Assets/avneesh.jpeg" alt="" className="dp" />
-              <h3>Water Intake</h3>
-              <div className="stars">
-                <i className="fas fa-star" />
-                <i className="fas fa-star" />
-                <i className="fas fa-star" />
-                <i className="fas fa-star" />
-                <i className="fas fa-star-half-alt" />
+              <div className="flex items-center gap-16">
+                <img src="https://images.pexels.com/photos/416528/pexels-photo-416528.jpeg" alt="" className="dp" />
+                <h3>Water Intake</h3>
               </div>
-              <p className="text">
+              <p className="text -mt-6">
                 I think the website is fantastic. It was so easy to get used to
                 the interface and the remedy was useful to me hence I didn't
                 really check out the appointment part and would not even be
@@ -190,16 +186,25 @@ export default function Landing() {
           </a>
           <a href="/snappage">
             <div className="box">
-              <img src="/Assets/savarna.jpeg" alt="" className="dp" />
-              <h3>Snap Streak</h3>
-              <div className="stars">
-                <i className="fas fa-star" />
-                <i className="fas fa-star" />
-                <i className="fas fa-star" />
-                <i className="fas fa-star" />
-                <i className="fas fa-star-half-alt" />
+              <div className="flex items-center gap-16">
+              <img src="https://img.freepik.com/premium-photo/apple-fruit-photo_650611-98.jpg" alt="" className="dp" />
+              <h3>Snap Streak</h3>                
               </div>
-              <p className="text">
+              <p className="text -mt-6">
+                The website was useful to me but I'd suggest you to kindly
+                mention the timings of clinics along with the fees of several
+                doctors at hospitals as for that we have to refer to google
+                anyways. The maps were easy to access.
+              </p>
+            </div>
+          </a>
+          <a href="/snappage">
+            <div className="box">
+              <div className="flex items-center gap-16">
+              <img src="https://www.cnet.com/a/img/resize/be5078fee8cc102e5149e367f52e7129450c035b/hub/2022/10/18/31d3da21-123a-4908-885a-e26c5df60fb9/clock-time-countdown-0954.jpg?auto=webp&fit=crop&height=1200&width=1200" alt="" className="dp" />
+              <h3>Task Based Alarm</h3>                
+              </div>
+              <p className="text -mt-6" >
                 The website was useful to me but I'd suggest you to kindly
                 mention the timings of clinics along with the fees of several
                 doctors at hospitals as for that we have to refer to google
@@ -322,8 +327,6 @@ export default function Landing() {
           | all rights reserved{" "}
         </div>
       </section>
-      {/* footer section ends */}
-      {/* custom js file link  */}
-    </>
+    </div>
   );
 }

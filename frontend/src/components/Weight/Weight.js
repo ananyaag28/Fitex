@@ -11,18 +11,17 @@ const Weight = ({userData, setUserData}) => {
   var bmi = 0;
   let bmiStage = '';
 
-  const calculateBMI = () => {
-    const { height, weight }  = userData.modelData;
-    console.log(height)
-    console.log(weight)
+  const calculateBMI = (weight) => {
+    const { height }  = userData.modelData;
     const heightFeet = height[0]
     const heightInches = height[2]
-    const currentWeight = parseFloat(selectedWeight);
+    const currentWeight = parseFloat(weight);
+
     if (currentWeight!=0) {
-      const heightInMeters = ((parseFloat(heightFeet) * 12 + parseFloat(heightInches))*0.0254).toFixed(1);
-      bmi = parseFloat(currentWeight / ((heightInMeters) * (heightInMeters))).toFixed(1);
-      
-      console.log(heightInMeters,bmi);
+      const heightInMeters = (((Number(heightFeet) * 12) + Number(heightInches)) * 0.0254).toFixed(1)
+      bmi = parseFloat(currentWeight / ((heightInMeters) * (heightInMeters))).toFixed(1)
+      bmi = bmi.toString()
+      console.log(heightInMeters, bmi);
       if (bmi < 18.5) bmiStage = 'Underweight';
       else if (bmi >= 18.5 && bmi <= 24.9) bmiStage = 'Normal';
       else if (bmi >= 25 && bmi <= 29.9) bmiStage = 'Pre-obesity';
@@ -35,7 +34,7 @@ const Weight = ({userData, setUserData}) => {
 
   const handleWeightChange = (event) => {
     setSelectedWeight(event.target.value);
-    calculateBMI();
+    calculateBMI(event.target.value);
     setUserData((prev) => ({
       ...prev, modelData: {
         ...prev.modelData,

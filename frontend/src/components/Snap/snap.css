@@ -1,7 +1,7 @@
-
 .snapPageContainer {
   font-family: "Tilt Neon", sans-serif;
-  background-image: url(./background.jpg);
+  background-image: url(../../../public/Images/6.jpg);
+
   background-repeat: repeat-y;
   
   background-size: cover;
@@ -9,7 +9,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* height: 100vh; */
+  height: 150vh;
+}
+.calory_count{
+  background-color: hsla(0, 0%, 100%, 0.411);
+  width: 100%;
+  border-radius: 8px;  
+  padding: 16px; 
+  margin-top: -10%;
+  margin-bottom: 5%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  color: black;
+  font-family: 'Courier New', Courier, monospace;
 }
 .instructions {
   background-color: hsla(0, 0%, 100%, 0.411);  

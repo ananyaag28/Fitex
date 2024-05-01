@@ -15,6 +15,7 @@ import Gender from "../Gender/Gender";
 import Height from "../Height/Height";
 import Weight from "../Weight/Weight";
 import { BACKEND_URL } from '../../values'
+import Dropdown from "../DropDown";
 
 const FormSignUp = ({ setIsSnackbarOpen, userData, setUserData, view, setView }) => {
   
@@ -67,10 +68,11 @@ const FormSignUp = ({ setIsSnackbarOpen, userData, setUserData, view, setView })
   
   const tabs = {
     0: <ConsumerTab1 handler={handler} />,
-    1: <Dob handler={handleDateChange} /> ,
-    2: <Gender setUserData={setUserData} />,
-    3: <Height setUserData={setUserData} />,
-    4: <Weight userData={userData} setUserData={setUserData} />,
+    1: <ConsumerTab2 setUserData={setUserData} /> ,
+    2: <Dob handler={handleDateChange} /> ,
+    3: <Gender setUserData={setUserData} />,
+    4: <Height setUserData={setUserData} />,
+    5: <Weight userData={userData} setUserData={setUserData} />,
   }
   
   const ColorLoadingButton = styled(LoadingButton)(({ theme }) => ({
@@ -145,7 +147,7 @@ const FormSignUp = ({ setIsSnackbarOpen, userData, setUserData, view, setView })
   }
 
   return (
-    <div className="sm:w-96">
+    <div className="sm:w-96 scale-150 mt-44">
       {view == "DATA_CONSUMER" && (
         <motion.div
           ref={investorFormRef}
@@ -176,7 +178,7 @@ const FormSignUp = ({ setIsSnackbarOpen, userData, setUserData, view, setView })
             <form name="consumerForm" id="consumerForm">
               {tabs[consumerPage]}
             </form>
-            <ColorLoadingButton loading={loading} type="submit" form="consumerForm" variant="contained" onClick={(e) => { consumerPage!=4 ? setConsumerPage(consumerPage+1) : signUpConsumer(e) }}> {consumerPage==4 ? <>Submit</> : <>Next</>}</ColorLoadingButton>
+            <ColorLoadingButton loading={loading} type="submit" form="consumerForm" variant="contained" onClick={(e) => { consumerPage!=5 ? setConsumerPage(consumerPage+1) : signUpConsumer(e) }}> {consumerPage==5 ? <>Submit</> : <>Next</>}</ColorLoadingButton>
 
           </div>
           <div className="mt-2">
@@ -305,6 +307,31 @@ const ConsumerTab1 = ({handler}) => {
           className="w-full xs:w-auto"
           onChange={(e) => { handler(e) }}
         />
+      </div>
+
+    </div>
+  )
+}
+
+const ConsumerTab2 = ({setUserData}) => {
+
+  const ColorLoadingButton = styled(LoadingButton)(({ theme }) => ({
+    color: theme.palette.getContrastText("#2b5146"),
+    backgroundColor: "#2b5146",
+    "&:hover": {
+      backgroundColor: "#2b5146",
+    },
+  }));
+
+  return (
+    <div className="flex flex-col gap-4 py-4">
+      <div className="flex flex-col xs:flex-row items-start xs:items-center justify-between">
+        <label htmlFor="name">Diet:</label>
+        <Dropdown label={"diet"} options={["Gluten Free", "Ketogenic", "Vegetarian", "Lacto-Vegetarian", "Ovo-Vegetarian", "Vegan"]} setUserData={setUserData} />
+      </div>
+      <div className="flex flex-col xs:flex-row items-start xs:items-center justify-between">
+        <label htmlFor="email">Allergies:</label>
+        <Dropdown label={"allergies"} options={[ "Dairy", "Peanut", "Soy", "Egg" , "Seafood", "Sulfite", "Gluten", "Sesame", "Tree Nut", "Grain", "Shellfish", "Wheat"]} setUserData={setUserData} />
       </div>
 
     </div>
