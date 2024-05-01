@@ -14,6 +14,8 @@ export default function Landing() {
   const [goal, setGoal] = useState(null);
 
   const [BMI, setBMI] = useState(null); // State to
+  const bmiString = BMI.toString(); // Convert BigInt to string
+
   const [bmiStage, setBmiStage] = useState(null);
   const [calories, setCalories] = useState(null);
   useEffect(() => {
@@ -60,7 +62,7 @@ export default function Landing() {
           {/* fffef2 */}
           <a href="/landing#services" className="text-[#fffef2] hover:text-[#cbedb3]">Other services</a>
           <a href="/landing#review" className="text-[#fffef2] hover:text-[#cbedb3]">Meal Plan</a>
-          <a className="text-xl font-extrabold text-[#cbedb3]">BMI: {BMI} ~ <span className="text">{bmiStage}</span></a>
+          <a className="text-xl font-extrabold text-[#cbedb3]">BMI: {bmiString} ~ <span className="text">{bmiStage}</span></a>
         </nav>
         <div id="menu-btn" className="fas fa-bars" />
       </header>

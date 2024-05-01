@@ -7,16 +7,20 @@ import { BACKEND_URL } from '../../values'
 
 const Cook = () => {
   useEffect(() => {
-    const fetchBmi = async () => {
+    const fetchOrders = async () => {
       try {
-        const res = await axios.get(`${BACKEND_URL}/consumer`);
-        const BMI = res.data[0].currentBmi;
+        const res = await axios.get(`${BACKEND_URL}/cook`);
+        console.log(res.data); // Assuming orders data is in res.data
+        // Now you can set the fetched orders to state or do whatever you want with them
       } catch (error) {
-        console.log("Error Logging In Consumer");
+        console.error("Error fetching orders:", error);
+        // Handle the error, show a message to the user, etc.
       }
     };
-    fetchBmi();
-  }, []);
+  
+    fetchOrders();
+  }, []); // Add chosenTask as dependency to recalculate when it changes
+
 
   return (
 <div class="bg-[rgb(8,164,132)] min-h-screen flex items-center justify-center ">
