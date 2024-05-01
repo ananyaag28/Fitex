@@ -10,6 +10,7 @@ router.post("/", async (req, res) => {
         id: Number(req.body.consumerId)
       }
     });
+    console.log(response)
     console.log("Consumer Fetched")
     res.json(response);
     

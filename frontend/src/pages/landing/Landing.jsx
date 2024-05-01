@@ -20,11 +20,13 @@ export default function Landing() {
   useEffect(() => {
     const fetchBmi = async () => {
       try {
-        const res = await axios.post(`${BACKEND_URL}/consumer`, {consumerId : consumer});
+        const res = await axios.post(`${BACKEND_URL}/consumer`, {
+          consumerId: consumer,
+        });
         const BMI = res.data.currentBmi;
-        console.log("BMI: ", BMI)
+        console.log("BMI: ", BMI);
         setBMI(BMI);
-        setBmiStage(res.data.currentBmiStage)
+        setBmiStage(res.data.currentBmiStage);
         console.log(BMI);
         console.log(res.data);
         const gender = res.data.gender;
@@ -52,7 +54,7 @@ export default function Landing() {
 
   return (
     <div className="landingPage">
-      <header className="header" style={{ backgroundColor: '#216c53' }} >
+      <header className="header" style={{ backgroundColor: "#216c53" }}>
         <div className="flex gap-2 items-center !text-white text-5xl">
           <img src={Fitex} height={125} width={125} alt="Logo" />
           <p>Fitex</p>
@@ -78,17 +80,14 @@ export default function Landing() {
       </section>
 
       <section className="about h-screen bg-[#FFFEF2]" id="about">
-        <h1 className="heading my-20">
-          {" "}
-          {/* <span>about</span> us{" "} */}
-        </h1>
+        <h1 className="heading my-20"> {/* <span>about</span> us{" "} */}</h1>
         <div className="row">
           <div className="image">
             <img
               src="https://img.freepik.com/free-photo/flay-lay-scale-weights_23-2148262188.jpg?size=626&ext=jpg&ga=GA1.1.553209589.1714435200&semt=sph"
               alt="Flay lay scale weights"
               className="m-5"
-              style={{ height: '300px', width: '500px' }} 
+              style={{ height: "300px", width: "500px" }}
             />
           </div>
           <div className="content">
@@ -125,12 +124,14 @@ export default function Landing() {
             <i className="fas fa-heartbeat" />
             <h3>Lose weight</h3>
             <p>
-              Get free check ups at college campus or book an appointment with
-              nearest clinic now.
+            Fitex creates customized diet plans focusing on calorie deficit and nutrient-rich foods to facilitate effective weight loss.
+
             </p>
             <a
               className="btn"
-              href={`/meals/${Math.floor(Math.random() * (2000 - 1500 + 1)) + 1500}`}
+              href={`/meals/${
+                Math.floor(Math.random() * (2000 - 1500 + 1)) + 1500
+              }`}
               onClick={() => handleGeneratePlanClick("lose")}
             >
               Generate Plan <span className="fas fa-chevron-right" />
@@ -139,10 +140,13 @@ export default function Landing() {
           <div className="box">
             <i className="fas fa-pills" />
             <h3>Maintain weight</h3>
-            <p>Find the medicines shop nearby.</p>
+            <p>Fitex develops diet plans emphasizing calorie balance and nutrient optimization to sustain current weight levels and support overall health.
+</p>
             <a
               className="btn"
-              href={`/meals/${Math.floor(Math.random() * (2500 - 2000 + 1)) + 2000}`}
+              href={`/meals/${
+                Math.floor(Math.random() * (2500 - 2000 + 1)) + 2000
+              }`}
               onClick={() => handleGeneratePlanClick("maintain")}
             >
               Generate Plan <span className="fas fa-chevron-right" />
@@ -152,12 +156,14 @@ export default function Landing() {
             <i className="fas fa-procedures" />
             <h3>Gain weight</h3>
             <p>
-              Who wants to turn up to medicines without asking mom about
-              alternatives.
+            Fitex generates personalized diet plans tailored to support weight gain goals, incorporating nutrient-dense foods and calorie surplus strategies.
+
             </p>
             <a
               className="btn"
-              href={`/meals/${Math.floor(Math.random() * (3000 - 2500 + 1)) + 2500}`}
+              href={`/meals/${
+                Math.floor(Math.random() * (3000 - 2500 + 1)) + 2500
+              }`}
               onClick={() => handleGeneratePlanClick("gain")}
             >
               Generate Plan <span className="fas fa-chevron-right" />
@@ -175,42 +181,59 @@ export default function Landing() {
           <a href="/waterpage">
             <div className="box">
               <div className="flex items-center gap-16">
-                <img src="https://images.pexels.com/photos/416528/pexels-photo-416528.jpeg" alt="" className="dp" />
-                <h3>Water Intake</h3>
+                <img
+                  src="https://images.pexels.com/photos/416528/pexels-photo-416528.jpeg"
+                  alt=""
+                  className="dp"
+                />
+                <h3>Water Tracker</h3>
               </div>
               <p className="text -mt-6">
-                I think the website is fantastic. It was so easy to get used to
-                the interface and the remedy was useful to me hence I didn't
-                really check out the appointment part and would not even be
-                willing to visit that anytime soon!
+                Fitex's water tracker allows users to monitor hydration levels
+                throughout the day, providing reminders and insights to ensure
+                adequate fluid intake for optimal health and well-being. With
+                intuitive features , users can stay
+                hydrated effortlessly, promoting overall wellness and
+                performance in their daily activities.
               </p>
             </div>
           </a>
           <a href="/snappage">
             <div className="box">
               <div className="flex items-center gap-16">
-              <img src="https://img.freepik.com/premium-photo/apple-fruit-photo_650611-98.jpg" alt="" className="dp" />
-              <h3>Snap Streak</h3>                
+                <img
+                  src="https://img.freepik.com/premium-photo/apple-fruit-photo_650611-98.jpg"
+                  alt=""
+                  className="dp"
+                />
+                <h3>Snap Streak</h3>
               </div>
               <p className="text -mt-6">
-                The website was useful to me but I'd suggest you to kindly
-                mention the timings of clinics along with the fees of several
-                doctors at hospitals as for that we have to refer to google
-                anyways. The maps were easy to access.
+                Snap streak in Fitex is a motivational feature that encourages
+                users to consistently track their meals by maintaining a streak.
+                Each consecutive day of logging meals earns users rewards and
+                recognition, fostering accountability and adherence to healthy
+                eating habits for long-term wellness.
               </p>
             </div>
           </a>
           <a href="/snappage">
             <div className="box">
               <div className="flex items-center gap-16">
-              <img src="https://www.cnet.com/a/img/resize/be5078fee8cc102e5149e367f52e7129450c035b/hub/2022/10/18/31d3da21-123a-4908-885a-e26c5df60fb9/clock-time-countdown-0954.jpg?auto=webp&fit=crop&height=1200&width=1200" alt="" className="dp" />
-              <h3>Task Based Alarm</h3>                
+                <img
+                  src="https://www.cnet.com/a/img/resize/be5078fee8cc102e5149e367f52e7129450c035b/hub/2022/10/18/31d3da21-123a-4908-885a-e26c5df60fb9/clock-time-countdown-0954.jpg?auto=webp&fit=crop&height=1200&width=1200"
+                  alt=""
+                  className="dp"
+                />
+                <h3>Task Based Alarm</h3>
               </div>
-              <p className="text -mt-6" >
-                The website was useful to me but I'd suggest you to kindly
-                mention the timings of clinics along with the fees of several
-                doctors at hospitals as for that we have to refer to google
-                anyways. The maps were easy to access.
+              <p className="text -mt-6">
+                Fitex's task reminder alarm clock helps users stay organized by
+                setting tasks and reminders. Upon completing a task, users can
+                upload a picture to signify its completion. This visual
+                confirmation reinforces productivity and accountability,
+                encouraging users to stay on track with their goals and
+                commitments.
               </p>
             </div>
           </a>

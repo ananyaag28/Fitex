@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./meals.css";
 import { useNavigate } from "react-router-dom";
 import RecipeCard from "../../Cards/RecipeCard/RecipeCard";
-import axios from "axios";
+import axios, { all } from "axios";
+
+import { BACKEND_URL } from "../../values";
 // import mealPlanData from "./outputMeal.json";
 // import BulkrecipeInfodata from "./recipeInfo.json";
 
@@ -10,7 +12,32 @@ import { useParams } from "react-router-dom";
 
 function Meals(props) {
   const navigate = useNavigate();
+
   const [loading, setLoading] = useState(true);
+  const [diet, setDiet] = useState();
+  const [allergies, setAllergies] = useState();
+ 
+  const consumer = localStorage.getItem("consumerId");
+  useEffect(() => {
+    const fetchBmi = async () => {
+      try {
+        const res = await axios.post(`${BACKEND_URL}/consumer`, {consumerId : consumer});
+        const BMI = res.data.currentBmi;
+        console.log(BMI)
+        const diet = res.data.diet;
+        setDiet(diet)
+        console.log(diet)
+        const allergies = res.data.allergies;
+        console.log(allergies)
+        setAllergies(allergies)
+        console.log(res.data)
+      } catch (error) {
+        console.log("Error Logging In Consumer");
+      }
+    };
+
+    fetchBmi();
+  }, []); // Add chosenTask as dependency to recalculate when it changes
 
   let params = useParams();
   console.log(props);
@@ -32,13 +59,16 @@ function Meals(props) {
   ];
   useEffect(() => {
     const fetchData = async () => {
+      console.log(diet)
+      console.log(allergies)
       const options = {
         method: "GET",
         url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/mealplans/generate",
         params: {
           timeFrame: "week",
           targetCalories: Calories,
-          diet: "vegan",
+          diet: diet,
+          exclude: allergies,
         },
         headers: {
           "X-RapidAPI-Key":

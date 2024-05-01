@@ -7,7 +7,7 @@ export default function RecipeCard({ data }) {
   const Price = data.pricePerServing;
   return (
     <a href={`/meals/${idRecipe}/${Price}`}>
-      <div className="recipeCard bg-[#abddc4] p-4 rounded-lg shadow-lg flex flex-col items-center">
+      <div className="recipeCard bg-[#abddc4] p-4 rounded-lg shadow-lg flex flex-col items-center !border-4 !border-white hover:scale-110">
   <img src={data?.image} className="w-full h-64 object-cover rounded-lg mb-4"></img>
   <h3 className="text-2xl font-semibold text-grey-900/50 mb-4 text-center">{data?.title}</h3>
   <div className="nutritions">
