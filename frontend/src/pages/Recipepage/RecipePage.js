@@ -89,7 +89,7 @@ const RecipePage = (props) => {
     const fetchRecipeData = async () => {
       const options = {
         method: "GET",
-        url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/324694/analyzedInstructions",
+        url: `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${recipeId}/analyzedInstructions`,
         params: {
           stepBreakdown: "true",
         },
@@ -105,6 +105,7 @@ const RecipePage = (props) => {
         const recipeData = await axios.request(options);
         console.log(recipeData.data);
         setRecipeData(recipeData.data);
+        console.log(recipeData.data)
         setLoading(false);
       } catch (error) {
         console.error(error);
@@ -125,42 +126,45 @@ const RecipePage = (props) => {
           <h1 className="text-6xl font-bold">Recipe Page</h1>
         </div>{" "}
         <br />
-        <div className=" grid grid-cols-2">
+        <div className="">
 
           {recipeData.map((recipe, index) => (
-            <div key={index} className="mb-8">
+            <div key={index} className="mb-8 rounded">
               <h2 className="text-2xl font-bold mb-2">{recipe.name}</h2>
               {recipe.steps.map((step, stepIndex) => (
-                <div key={stepIndex} className="mb-4">
-                  <h3 className="text-xl font-semibold mb-1">
+                <div key={stepIndex} className="mb-14">
+                  <h3 className="text-2xl font-semibold mb-1">
                     Step {step.number}
                   </h3>
                   <br />
-                  <p className="text-xl">{step.step}</p>
-                  <br />
-                  <h4 className="text-lg font-semibold mb-1">Ingredients:</h4>
-                  <br />
-                  <div className="ingredient-cards flex flex-wrap">
-                    {step.ingredients.map((ingredient, ingredientIndex) => (
-                      <IngredientCard
-                        key={ingredientIndex}
-                        ingredient={ingredient}
-                      />
-                    ))}
+                  <div className="bg-white p-10 rounded-3xl">
+                    <p className="text-2xl">{step.step}</p>
+                    <br />
+                    <h4 className="text-lg font-semibold mb-1">Ingredients:</h4>
+                    <br />
+                    <div className="ingredient-cards flex flex-wrap">
+                      {step.ingredients.map((ingredient, ingredientIndex) => (
+                        <IngredientCard
+                          key={ingredientIndex}
+                          ingredient={ingredient}
+                        />
+                      ))}
+                    </div>
+                    <br />
+                    {step.equipment.length > 0 && (
+                      <>
+                        <h4 className="text-lg font-semibold mb-1">Equipment:</h4>
+                        <br />
+                        <ul className="list-disc pl-5">
+                          {step.equipment.map((equip, equipIndex) => (
+                            <IngredientCard key={equipIndex} ingredient={equip} />
+                          ))}
+                        </ul>
+                        <br />
+                      </>
+                    )}
+
                   </div>
-                  <br />
-                  {step.equipment.length > 0 && (
-                    <>
-                      <h4 className="text-lg font-semibold mb-1">Equipment:</h4>
-                      <br />
-                      <ul className="list-disc pl-5">
-                        {step.equipment.map((equip, equipIndex) => (
-                          <IngredientCard key={equipIndex} ingredient={equip} />
-                        ))}
-                      </ul>
-                      <br />
-                    </>
-                  )}
                 </div>
               ))}
             </div>
@@ -171,7 +175,7 @@ const RecipePage = (props) => {
             Price per serving: ₹{Math.round(priceData)}
           </span>
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-4xl"
             onClick={handleOrder}
           >
             {orderStatus === "waiting"
