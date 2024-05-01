@@ -96,10 +96,10 @@ const LoginForm = ({ setIsSnackbarOpen, existingEmail, userData, setUserData, vi
       if (response.data.error) {
         setIsSnackbarOpen(() => ({ color: "danger", message: response.data.error }))
         
-        localStorage.setItem("cookId", response.data.data.id)
         setLoading(false)
       }
       else {
+        localStorage.setItem("cookId", response.data.data.id)
         navigate('/cook')
       }
     } catch (error) {

@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import recipeData from "./recipeJson.json";
-
 import { BACKEND_URL } from "../../values";
 import { useParams } from "react-router-dom";
 
@@ -20,25 +18,66 @@ const IngredientCard = ({ ingredient }) => {
 
 const RecipePage = (props) => {
   const [recipeData, setRecipeData] = useState(null);
-
-  const [orderStatus, setOrderStatus] = useState(null);
+  const [orderStatus, setOrderStatus] = useState("waiting");
   const [loading, setLoading] = useState(true);
-  let params = useParams();
-  console.log(props);
+  const params = useParams();
   const priceData = params.price;
-  console.log(priceData);
   const recipeId = params.id;
-  console.log(recipeId);
+  const reloadTime = 1 * 60 * 1000; // 5 minutes in milliseconds
+  const consumerId = Number(localStorage.getItem("consumerId"));
+  const [ordersFromDatabase, setOrdersFromDatabase] = useState([]);
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      window.location.reload();
+    }, reloadTime);
+
+    return () => clearTimeout(timerId);
+  }, []); 
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const res = await axios.get(`${BACKEND_URL}/consumer/getOrder`);
+        console.log(res.data);
+        setOrdersFromDatabase(res.data);
+      } catch (error) {
+        console.error("Error fetching orders:", error);
+      }
+    };
+
+    fetchOrders();
+  }, []);
+
+  useEffect(() => {
+    // Find if there's a matching order in the database
+    const matchingOrder = ordersFromDatabase.find(order => 
+      order.consumerId === consumerId && order.recipeId === recipeId
+    );
+
+    // Update orderStatus based on the matching order
+    if (matchingOrder) {
+      if (matchingOrder.orderAccepted) {
+        setOrderStatus("accepted");
+      } else if (matchingOrder.orderPlaced) {
+        setOrderStatus("waiting");
+      } else {
+        setOrderStatus("order");
+      }
+    } else {
+      setOrderStatus("order");
+    }
+  }, [ordersFromDatabase, consumerId, recipeId]);
 
   const handleOrder = async () => {
     setOrderStatus("waiting");
     try {
-      const res = await axios.put(`${BACKEND_URL}/consumer/order`, {
+      const res = await axios.post(`${BACKEND_URL}/consumer/order`, {
         recipeId: parseInt(recipeId, 10),
         orderPlaced: true,
         orderAccepted: false,
         consumerId: Number(localStorage.getItem("consumerId")),
-        cookId: 0,
+        cookId: null,
       });
       console.log(res);
     } catch (error) {
@@ -74,6 +113,7 @@ const RecipePage = (props) => {
 
     fetchRecipeData();
   }, []);
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -133,6 +173,8 @@ const RecipePage = (props) => {
           >
             {orderStatus === "waiting"
               ? "Waiting to be accepted"
+              : orderStatus === "accepted"
+              ? "Order accepted"
               : "Want to order?"}
           </button>
         </div>

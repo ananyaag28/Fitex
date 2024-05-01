@@ -5,6 +5,7 @@ import Fitex from "./fitex.png";
 import { BACKEND_URL } from "../../values";
 
 const Cook = () => {
+  const[orders, setOrders] = useState([])
   const [BulkrecipeInfodata, setBulkrecipeInfodata] = useState([]);
   const [loading, setLoading] = useState(true);
   const history = useNavigate(); // Initialize useHistory hook
@@ -14,7 +15,7 @@ const Cook = () => {
       try {
         const res = await axios.get(`${BACKEND_URL}/cook`);
         console.log(res.data);
-        
+        setOrders(res.data)
         const data = res.data;
         const recipeIds = data.map((item) => item.recipeId);
         console.log(recipeIds); // Output: ['635446', '659604']
@@ -55,9 +56,9 @@ const Cook = () => {
   }, []);
 
   // Function to handle click on recipe card
-  const handleRecipeClick = (recipeId) => {
+  const handleRecipeClick = (recipeId, orderId) => {
     // Redirect to dynamic route
-    history(`/cookRec/${recipeId}`);
+    history(`/cookRec/${recipeId}/${orderId}`);
   };
 
   return (
@@ -134,11 +135,11 @@ const Cook = () => {
             {loading ? (
               <p>Loading...</p>
             ) : (
-              BulkrecipeInfodata.map((recipe) => (
+              BulkrecipeInfodata.map((recipe, id) => (
                 <a
                   key={recipe.id}
                   class="relative group bg-[#abddc4] py-10 sm:py-20 px-4 flex flex-col space-y-2 items-center cursor-pointer rounded-md hover:bg-green-700/50 hover:smooth-hover"
-                  onClick={() => handleRecipeClick(recipe.id)} // Attach click event to each recipe card
+                  onClick={() => handleRecipeClick(recipe.id, orders[id].id)} // Attach click event to each recipe card
                   // href={`cookRec/${recipe.id}`} // Set the dynamic route as href
                 >
                   <img

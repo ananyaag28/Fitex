@@ -14,7 +14,7 @@ export default function Landing() {
   const [goal, setGoal] = useState(null);
 
   const [BMI, setBMI] = useState(null); // State to
-  const bmiString = BMI.toString(); // Convert BigInt to string
+  const bmiString = BMI?.toString(); // Convert BigInt to string
 
   const [bmiStage, setBmiStage] = useState(null);
   const [calories, setCalories] = useState(null);
