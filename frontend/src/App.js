@@ -64,7 +64,7 @@ function App() {
           <Route path='/meals/:id/:price' element={<RecipePage />} />
           <Route path='/mainform' element={<MainForm userData={userData} updateUserData={updateUserData}/>}></Route>
           <Route path='/landing' element={<Landing userData={userData} updateUserData={updateUserData}/>}></Route>
-          <Route path='/cookRec/:id' element={<CookRec />} />
+          <Route path='/cookRec/:recipeId/:orderId' element={<CookRec />} />
         
         </Routes>
       </Router>

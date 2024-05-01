@@ -45,7 +45,7 @@ const loginConsumer = async (req, res) => {
   try {
 
       if (!req.consumer) {
-        return res.status(200).json({ error: "Employee Does not Exist" });
+        return res.status(200).json({ error: "Consumer Does not Exist" });
       }
       const { password } = req.body;
       const dbPassword = req.consumer.password;

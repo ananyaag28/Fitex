@@ -24,18 +24,23 @@ const CookRec = (props) => {
   const [loading, setLoading] = useState(true);
   let params = useParams();
   console.log(props);
-  const recipeId = params.id;
+  const recipeId = params.recipeId;
   console.log(recipeId);
+  const orderId = params.orderId;
+  console.log(orderId);
 
   const handleOrder = async () => {
     try {
-      const res = await axios.post(`${BACKEND_URL}/cook/orderAccepted`, {
+      const res = await axios.put(`${BACKEND_URL}/cook/orderAccepted`, {
         recipeId: parseInt(recipeId, 10),
         orderPlaced: false,
         orderAccepted: true,
         consumerId: Number(localStorage.getItem("consumerId")),
-        cookId: Number(localStorage.getItem("cookId"))
+        cookId: Number(localStorage.getItem("cookId")),
+        orderId: Number(orderId),
       });
+      console.log(Number(localStorage.getItem("consumerId")))
+      console.log(Number(localStorage.getItem("cookId")),)
       console.log(res)
     } catch (error) {
       console.log("Error Logging In Consumer");

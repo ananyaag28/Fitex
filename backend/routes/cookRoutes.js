@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
       recipeId : res.recipeId.toString(),
     }
   })
-  console.log(response)
+  // console.log(response)
   res.json(response);
 });
 
