@@ -12,7 +12,9 @@ const Weight = ({userData, setUserData}) => {
   let bmiStage = '';
 
   const calculateBMI = () => {
-    const { height }  = userData.modelData;
+    const { height, weight }  = userData.modelData;
+    console.log(height)
+    console.log(weight)
     const heightFeet = height[0]
     const heightInches = height[2]
     const currentWeight = parseFloat(selectedWeight);

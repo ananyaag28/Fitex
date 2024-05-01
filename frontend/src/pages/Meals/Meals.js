@@ -3,19 +3,22 @@ import "./meals.css";
 import { useNavigate } from "react-router-dom";
 import RecipeCard from "../../Cards/RecipeCard/RecipeCard";
 import axios from "axios";
-import mealPlanData from "./outputMeal.json";
-import BulkrecipeInfodata from "./recipeInfo.json";
+// import mealPlanData from "./outputMeal.json";
+// import BulkrecipeInfodata from "./recipeInfo.json";
 
-function Meals({setPriceData}) {
+import { useParams } from "react-router-dom";
+
+function Meals(props) {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
 
+  let params = useParams();
+  console.log(props);
+  const Calories = params.calories;
+  console.log(Calories);
+
   const handleInfopageCardClick = () => {
     navigate("/infopage");
-  };
-  const handlePriceDataUpdate = (newPriceData) => {
-    setPriceData(newPriceData);
-    console.log(newPriceData);
   };
   const [groupedItems, setGroupedItems] = useState([]);
   const weekDays = [
@@ -34,7 +37,7 @@ function Meals({setPriceData}) {
         url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/mealplans/generate",
         params: {
           timeFrame: "week",
-          targetCalories: "2000",
+          targetCalories: Calories,
           diet: "vegan",
         },
         headers: {
@@ -45,8 +48,8 @@ function Meals({setPriceData}) {
         },
       };
       try {
-        // const response = await axios.request(options);
-        // const mealPlanData = response.data;
+        const response = await axios.request(options);
+        const mealPlanData = response.data;
 
         console.log(mealPlanData);
         const recipeIds = mealPlanData.items.map(
@@ -68,9 +71,9 @@ function Meals({setPriceData}) {
               "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
           },
         };
-        // const BulkrecipeInfo = await axios.request(BulkRecipeInfoRequest);
-        // console.log(BulkrecipeInfo.data);
-        // const BulkrecipeInfodata = BulkrecipeInfo.data; 
+        const BulkrecipeInfo = await axios.request(BulkRecipeInfoRequest);
+        console.log(BulkrecipeInfo.data);
+        const BulkrecipeInfodata = BulkrecipeInfo.data;
 
         const updatedGroupedItems = [];
         mealPlanData.items.forEach((item) => {
@@ -103,26 +106,32 @@ function Meals({setPriceData}) {
   return (
     <div className="Meals">
       <div className="mealsPage-header bg-[#f5f5dc] rounded-lg p-4 shadow-lg flex flex-col items-start justify-between">
-      <h1 className="text-3xl font-bold text-[rgb(8,164,132)] mb-4">My Diet Plan</h1>
-      <div className="infopageCard" onClick={handleInfopageCardClick}></div>
-      <h3 className="TargetCalories text-lg font-semibold text-[rgb(8,164,132)]">Targeted Calories per day - </h3>
-      </div><br /><br />
+        <h1 className="text-3xl font-bold text-[rgb(8,164,132)] mb-4">
+          My Diet Plan
+        </h1>
+        <div className="infopageCard" onClick={handleInfopageCardClick}></div>
+        <h3 className="TargetCalories text-lg font-semibold text-[rgb(8,164,132)]">
+          Targeted Calories per day - {Calories}
+        </h3>
+      </div>
+      <br />
+      <br />
       <div className="cardsCover bg-[#f5f5dc] p-6 rounded-lg shadow-lg flex flex-col items-center justify-between overflow-auto">
         {groupedItems[0] &&
           groupedItems.map((day, i) => {
             console.log(day);
-            
+
             return (
               <>
-                <h2 className="text-4xl font-semibold text-grey-900 mb-4">{weekDays[i]}</h2>
+                <h2 className="text-4xl font-semibold text-grey-900 mb-4">
+                  {weekDays[i]}
+                </h2>
                 <div className="days mx-4 flex flex-wrap justify-center">
-                  
-                    <RecipeCard data={day[0]} key={`${i} 1`} />
-                 
-                    <RecipeCard data={day[1]} key={`${i} 2`} />
-                  
-                    <RecipeCard data={day[2]} key={`${i} 3`} />
-                 
+                  <RecipeCard data={day[0]} key={`${i} 1`} />
+
+                  <RecipeCard data={day[1]} key={`${i} 2`} />
+
+                  <RecipeCard data={day[2]} key={`${i} 3`} />
                 </div>
               </>
             );

@@ -30,10 +30,10 @@ model Cook {
 
 model Order {
   id            Int      @id @default(autoincrement())
+  consumer      Consumer @relation(fields: [consumerId], references: [id])
   consumerId    Int
-  cookId        BigInt   @unique
+  cookId        BigInt?   @unique
   orderPlaced   Boolean  @default(false)
   orderAccepted Boolean  @default(false)
   recipeId      BigInt
-  consumer      Consumer @relation(fields: [consumerId], references: [id])
 }

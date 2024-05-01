@@ -58,7 +58,7 @@ function App() {
           <Route path='/bmicard' element={<BMICard userData={userData} updateUserData={updateUserData}/>}></Route>
           <Route path='/fitex' element={<Home userData={userData} updateUserData={updateUserData}/>}></Route>
           <Route path='/cook' element={<Cook userData={userData} updateUserData={updateUserData}/>}></Route>
-          <Route path='/meals' element={<Meals userData={userData} updateUserData={updateUserData}/>}></Route>
+          <Route path='/meals/:calories' element={<Meals userData={userData} updateUserData={updateUserData}/>}></Route>
             {/* Define the route for the recipe page with a dynamic parameter */}
           <Route path='/meals/:id/:price' element={<RecipePage />} />
           <Route path='/mainform' element={<MainForm userData={userData} updateUserData={updateUserData}/>}></Route>

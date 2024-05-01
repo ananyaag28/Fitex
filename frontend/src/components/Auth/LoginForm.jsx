@@ -71,7 +71,7 @@ const LoginForm = ({ setIsSnackbarOpen, existingEmail, userData, setUserData, vi
       if(res.data.message) {
         setIsSnackbarOpen(() => ({ color: "success", message: res.data.message }))
         localStorage.setItem("consumerId", res.data.data.id)
-        navigate('/fitex')
+        navigate('/landing')
       }
       else if(res.data.error) {
         console.log(res.data.error)
