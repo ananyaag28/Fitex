@@ -13,35 +13,32 @@ router.get("/", async (req, res) => {
   response = response.map((res) => {
     return {
       ...res,
-      recipeId : res.recipeId.toString()
+      recipeId : res.recipeId.toString(),
     }
   })
   console.log(response)
   res.json(response);
 });
-router.post("/orderAccepted", async (req, res) => {
+
+router.put("/orderAccepted", async (req, res) => {
   try {
+  console.log(req.body.orderId)
   
     const order = await prisma.order.update({
       where: {
-        recipeId:  req.body.recipeId,
-        consumerId: req.body.consumerId,
-        cookId: req.body.cookId,
+        // recipeId: req.body.recipeId,
+        id: req.body.orderId
       },
       data: {
-        
-        // consumerId: req.body.consumerId,
         cookId: req.body.cookId,
-        orderPlaced: req.body.orderPlaced || false, // default to false if not provided
-        orderAccepted: req.body.orderAccepted || true, // default to false if not provided
-        recipeId: req.body.recipeId,
-        consumer: {
-          connect: { id: req.body.consumerId }
-        }
+        orderPlaced: false, // default to false if not provided
+        orderAccepted: true, // default to false if not 
       },
-    });
 
-    console.log("Order created Successfully !!")
+    });
+    console.log(order)
+
+    console.log("Order Accepted Successfully !!")
     
   } catch (error) {
     console.log("Error in order: ", error)
