@@ -10,6 +10,8 @@ CREATE TABLE "Consumer" (
     "weight" TEXT NOT NULL,
     "currentBmi" TEXT NOT NULL,
     "currentBmiStage" TEXT NOT NULL,
+    "diet" TEXT NOT NULL,
+    "allergies" TEXT NOT NULL,
 
     CONSTRAINT "Consumer_pkey" PRIMARY KEY ("id")
 );
@@ -28,7 +30,10 @@ CREATE TABLE "Cook" (
 CREATE TABLE "Order" (
     "id" SERIAL NOT NULL,
     "consumerId" INTEGER NOT NULL,
-    "cookId" INTEGER NOT NULL,
+    "cookId" BIGINT,
+    "orderPlaced" BOOLEAN NOT NULL DEFAULT false,
+    "orderAccepted" BOOLEAN NOT NULL DEFAULT false,
+    "recipeId" BIGINT NOT NULL,
 
     CONSTRAINT "Order_pkey" PRIMARY KEY ("id")
 );
@@ -44,6 +49,3 @@ CREATE UNIQUE INDEX "Order_cookId_key" ON "Order"("cookId");
 
 -- AddForeignKey
 ALTER TABLE "Order" ADD CONSTRAINT "Order_consumerId_fkey" FOREIGN KEY ("consumerId") REFERENCES "Consumer"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "Order" ADD CONSTRAINT "Order_cookId_fkey" FOREIGN KEY ("cookId") REFERENCES "Cook"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
