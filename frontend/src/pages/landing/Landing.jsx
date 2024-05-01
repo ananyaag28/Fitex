@@ -59,7 +59,9 @@ export default function Landing() {
         </div>
         <nav className="navbar">
           <div className="dropdown">
-            <a href="/landing" className="text-[#fffef2] hover:text-[#cbedb3]">home</a>
+            <a href="/landing" className="text-[#fffef2] hover:text-[#cbedb3]">
+              home
+            </a>
           </div>
           {/* fffef2 */}
           <a href="/landing#review" className="text-[#fffef2] hover:text-[#cbedb3]">Other services</a>

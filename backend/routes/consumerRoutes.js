@@ -19,6 +19,7 @@ router.post("/", async (req, res) => {
 });
 router.post("/order", async (req, res) => {
   try {
+    console.log(req.body)
   
     const order = await prisma.order.create({
       data: {
@@ -39,4 +40,19 @@ router.post("/order", async (req, res) => {
     console.log("Error in order: ", error)
   }
 });
+
+router.get("/getOrder", async (req, res) => {
+  let response = await prisma.order.findMany();
+
+  response = response.map((res) => {
+    return {
+      ...res,
+      recipeId : res.recipeId.toString(),
+      cookId : res.cookId.toString()
+    }
+  })
+  console.log(response)
+  res.json(response);
+});
+
 module.exports = router;

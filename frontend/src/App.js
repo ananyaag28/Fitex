@@ -15,6 +15,7 @@ import Cook from './pages/Cook/Cook';
 import RecipePage from './pages/Recipepage/RecipePage';
 import MainForm from './pages/mainForm/MainForm';
 import Landing from './pages/landing/Landing';
+import CookRec from './pages/cookRec/cookRec';
 
 function App() {
 
@@ -63,6 +64,7 @@ function App() {
           <Route path='/meals/:id/:price' element={<RecipePage />} />
           <Route path='/mainform' element={<MainForm userData={userData} updateUserData={updateUserData}/>}></Route>
           <Route path='/landing' element={<Landing userData={userData} updateUserData={updateUserData}/>}></Route>
+          <Route path='/cookRec/:id' element={<CookRec />} />
         
         </Routes>
       </Router>

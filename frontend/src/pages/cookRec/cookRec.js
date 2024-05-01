@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 // import recipeData from "./recipeJson.json";
 
-import { BACKEND_URL } from "../../values";
+import { BACKEND_URL } from "../../values"  ;
 import { useParams } from "react-router-dom";
 
 const IngredientCard = ({ ingredient }) => {
@@ -18,29 +18,25 @@ const IngredientCard = ({ ingredient }) => {
   );
 };
 
-const RecipePage = (props) => {
+const CookRec = (props) => {
   const [recipeData, setRecipeData] = useState(null);
-
-  const [orderStatus, setOrderStatus] = useState(null);
+  console.log(Number(localStorage.getItem("cookId")))
   const [loading, setLoading] = useState(true);
   let params = useParams();
   console.log(props);
-  const priceData = params.price;
-  console.log(priceData);
   const recipeId = params.id;
   console.log(recipeId);
 
   const handleOrder = async () => {
-    setOrderStatus("waiting");
     try {
-      const res = await axios.put(`${BACKEND_URL}/consumer/order`, {
+      const res = await axios.post(`${BACKEND_URL}/cook/orderAccepted`, {
         recipeId: parseInt(recipeId, 10),
-        orderPlaced: true,
-        orderAccepted: false,
+        orderPlaced: false,
+        orderAccepted: true,
         consumerId: Number(localStorage.getItem("consumerId")),
-        cookId: 0,
+        cookId: Number(localStorage.getItem("cookId"))
       });
-      console.log(res);
+      console.log(res)
     } catch (error) {
       console.log("Error Logging In Consumer");
     }
@@ -116,29 +112,24 @@ const RecipePage = (props) => {
                         <IngredientCard key={equipIndex} ingredient={equip} />
                       ))}
                     </ul>
-                    <br />
+                    <br/>
                   </>
                 )}
               </div>
             ))}
           </div>
         ))}
-        <div className="flex flex-col items-center">
-          <span className="text-2xl font-bold mb-4">
-            Price per serving: ₹{Math.round(priceData)}
-          </span>
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            onClick={handleOrder}
-          >
-            {orderStatus === "waiting"
-              ? "Waiting to be accepted"
-              : "Want to order?"}
-          </button>
-        </div>
+        <div className="flex flex-row items-center">
+  <button className="bg-blue-500 hover:bg-blue-700 m-5 text-white font-bold py-2 px-4 rounded" onClick={handleOrder}>
+    Accept
+  </button>
+  <button className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    Deny
+  </button>
+</div>
       </div>
     </div>
   );
 };
 
-export default RecipePage;
+export default CookRec;

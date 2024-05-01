@@ -78,7 +78,7 @@ const loginCook = async (req, res) => {
             sameSite: "none",
           })
           .status(200)
-          .json({ message: "Cook Logged In Successfully" });
+          .json({ message: "Cook Logged In Successfully", data: req.cook });
       }
       else {
         return res.status(200).json({ error: "Incorrect Password" });

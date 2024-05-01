@@ -4,30 +4,41 @@ const prisma = require("../db");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  const response = await prisma.order.findMany({
+  let response = await prisma.order.findMany({
     where: {
         orderPlaced: true
     }
   });
+
+  response = response.map((res) => {
+    return {
+      ...res,
+      recipeId : res.recipeId.toString(),
+    }
+  })
+  console.log(response)
   res.json(response);
 });
-router.post("/orderAccepted", async (req, res) => {
-  try {
-  
-    const order = await prisma.order.create({
-      data: {
-        // consumerId: req.body.consumerId,
-        cookId: req.body.cookId,
-        orderPlaced: req.body.orderPlaced || false, // default to false if not provided
-        orderAccepted: req.body.orderAccepted || false, // default to false if not provided
-        recipeId: req.body.recipeId,
-        consumer: {
-          connect: { id: req.body.consumerId }
-        }
-      },
-    });
 
-    console.log("Order created Successfully !!")
+router.put("/orderAccepted", async (req, res) => {
+  try {
+  console.log(req.body.orderId)
+  
+    const order = await prisma.order.update({
+      where: {
+        // recipeId: req.body.recipeId,
+        id: req.body.orderId
+      },
+      data: {
+        cookId: req.body.cookId,
+        orderPlaced: false, // default to false if not provided
+        orderAccepted: true, // default to false if not 
+      },
+
+    });
+    console.log(order)
+
+    console.log("Order Accepted Successfully !!")
     
   } catch (error) {
     console.log("Error in order: ", error)
