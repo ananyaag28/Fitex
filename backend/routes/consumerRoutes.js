@@ -3,9 +3,19 @@ const { authorization, roleAuthorization } = require("../middlewares/Auth");
 const prisma = require("../db");
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-  const response = await prisma.consumer.findMany();
-  res.json(response);
+router.post("/", async (req, res) => {
+  try {
+    const response = await prisma.consumer.findUnique({
+      where: {
+        id: Number(req.body.consumerId)
+      }
+    });
+    console.log("Consumer Fetched")
+    res.json(response);
+    
+  } catch (error) {
+    console.log(error)
+  }
 });
 router.post("/order", async (req, res) => {
   try {
